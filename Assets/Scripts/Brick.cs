@@ -9,6 +9,7 @@ public class Brick : MonoBehaviour
 	{
         if (col.gameObject.tag == "Ball")
         {
+            GameManager.instance.brick_destroyed();
             Destroy(gameObject);
             //TODO: Score system
             //TODO: animations and sounds

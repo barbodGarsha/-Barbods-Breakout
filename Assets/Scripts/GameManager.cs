@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
+    public int bricks;
     public int lives = 1;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,16 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    public void brick_destroyed() 
+    {
+        bricks--;
+        if (bricks == 0)
+        {
+            Debug.Log("WON");
+            //TODO: you won scene or something
+        }
+    }
+
 
     public void ball_hit_floor()
     {
@@ -24,6 +35,10 @@ public class GameManager : MonoBehaviour
         if (lives == 0)
         {
             lose();
+        }
+        else
+        {
+            //reset the ball not the game
         }
     }
 
