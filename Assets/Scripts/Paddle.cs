@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
-	const float LEFT_MAX = -8f;
-	const float RIGHT_MAX = 8f;
+	const float LEFT_MAX = -9.7f;
+	const float RIGHT_MAX = 9.7f;
 
 	public float paddle_speed = 35;
-	private Vector2 paddle_pos = new Vector2(0, -4.5f);
 
-	// Update is called once per frame
-	void Update()
+	private Vector2 paddle_pos;
+    private void Start()
+    {
+		paddle_pos = this.transform.position;
+    }
+
+    // Update is called once per frame
+    void Update()
 	{
 		//We can move the paddle with arrow keys now
 		//TODO: Add moving with mouse... it's hard to play with the Arrow keys
