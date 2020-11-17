@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    public Text score_text;
 
     public int bricks;
     public int lives = 1;
+    int score = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +25,8 @@ public class GameManager : MonoBehaviour
     public void brick_destroyed() 
     {
         bricks--;
+        score += 25;
+        score_text.text = "SCORE: " + score;
         if (bricks == 0)
         {
             Debug.Log("WON");
