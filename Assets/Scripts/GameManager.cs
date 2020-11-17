@@ -8,9 +8,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     public Text score_text;
+    public Text lives_text;
 
     public int bricks;
-    public int lives = 1;
+    public int lives = 1; //WARNING : don't add lives the code is not finished yet
     int score = 0;
 
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+        lives_text.text = "LIVES: " + lives;
     }
 
     public void brick_destroyed() 
@@ -44,10 +46,12 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //reset the ball not the game
+            lives_text.text = "LIVES: " + lives;
+            //NOT FINISHED
         }
     }
 
+    
     void lose()
     {
         //TODO: gameover scene or something should be shown but for now it just resets the level

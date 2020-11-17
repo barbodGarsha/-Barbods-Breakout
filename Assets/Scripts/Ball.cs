@@ -99,9 +99,9 @@ public class Ball : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Floor")
         {
-            //lose
-            Debug.Log("LOST");
             GameManager.instance.ball_hit_floor();
+            //NOT FINISHED
+
         }
         else // When the ball hits other objects in the game it should just bounce on it like always
         {

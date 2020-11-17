@@ -11,7 +11,6 @@ public class Brick : MonoBehaviour
         {
             GameManager.instance.brick_destroyed();
             Destroy(gameObject);
-            //TODO: Score system
             //TODO: animations and sounds
         }
 	}
