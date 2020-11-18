@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    private Vector2 direction = new Vector2(1, 1);
+    //Offset of the ball from the paddle
+    const float BALL_OFFSET = 0.65f;
+
+    private Vector2 direction = new Vector2(0, 1);
     public float speed = 20f;
+    public GameObject paddle;
+
+    bool is_ball_thrown = false;
 
     //calculates which side of the paddle the ball hits
     int hit_pos(Vector2 ball_pos, Vector2 paddle_pos, float paddle_width)
@@ -36,6 +42,13 @@ public class Ball : MonoBehaviour
         return v3;
     }
 
+    void reset_ball() 
+    {
+        is_ball_thrown = false;
+        paddle.transform.position = new Vector3(0, paddle.transform.position.y, 0);
+        this.transform.position = new Vector3(0, paddle.transform.position.y + BALL_OFFSET, 0); 
+        direction = new Vector2(0, 1);
+    }
     void Start()
     {
         direction.Normalize();
@@ -43,8 +56,19 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        //The ball keeps moving till it hits something. then it changes it's direction
-        this.transform.position += to_vector3(direction) * speed * Time.deltaTime;
+        if (Input.GetMouseButtonDown(0))
+        {
+            is_ball_thrown = true;
+        }
+        if (is_ball_thrown)
+        {
+            //The ball keeps moving till it hits something. then it changes it's direction
+            this.transform.position += to_vector3(direction) * speed * Time.deltaTime;
+        }
+        else
+        {
+            this.transform.position = new Vector3(paddle.transform.position.x, paddle.transform.position.y + 0.65f, 0);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -100,7 +124,7 @@ public class Ball : MonoBehaviour
         else if (collision.gameObject.tag == "Floor")
         {
             GameManager.instance.ball_hit_floor();
-            //NOT FINISHED
+            reset_ball();
 
         }
         else // When the ball hits other objects in the game it should just bounce on it like always
