@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
-	const float LEFT_MAX = -9.7f;
-	const float RIGHT_MAX = 9.7f;
+	const float LEFT_MAX = -10.06f;
+	const float RIGHT_MAX = 10.06f;
 
 	//Note: this is only needed for the Moving with the keyboard
 	//public float paddle_speed = 35;
