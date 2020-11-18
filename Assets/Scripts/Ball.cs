@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     //Offset of the ball from the paddle
-    const float BALL_OFFSET = 0.65f;
+    const float BALL_OFFSET = 0.48f;
 
     private Vector2 direction = new Vector2(0, 1);
     public float speed = 20f;
@@ -67,7 +67,7 @@ public class Ball : MonoBehaviour
         }
         else
         {
-            this.transform.position = new Vector3(paddle.transform.position.x, paddle.transform.position.y + 0.65f, 0);
+            this.transform.position = new Vector3(paddle.transform.position.x, paddle.transform.position.y + BALL_OFFSET, 0);
         }
     }
 
