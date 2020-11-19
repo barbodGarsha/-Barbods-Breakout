@@ -102,7 +102,10 @@ public class GameManager : MonoBehaviour
         }
         else if (game_status == status.WON)
         {
-
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                reset();
+            }
         }
         else if (game_status == status.PAUSE)
         {
