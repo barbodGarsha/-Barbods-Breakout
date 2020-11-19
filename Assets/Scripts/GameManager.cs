@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
         PLAYING,
         PAUSE,
         WON,
-        GAMEOVER
+        GAMEOVER,
+        MENU
     }
 
     public static GameManager instance = null;
@@ -32,10 +33,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         if (instance == null) { instance = this; }
         else { Destroy(gameObject); }
 
-        lives_text.text = "LIVES: " + lives;
+       // lives_text.text = "LIVES: " + lives;
     }
 
     public void brick_destroyed() 
@@ -108,6 +110,10 @@ public class GameManager : MonoBehaviour
             }
         }
         else if (game_status == status.PAUSE)
+        {
+
+        }
+        else if (game_status == status.MENU)
         {
 
         }
