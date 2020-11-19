@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CloudMovement : MonoBehaviour
 {
-    const float CLOUD_SPEED = 1f;
+    const float CLOUD_SPEED = 0.65f;
     Vector3 start_pos;
     // Start is called before the first frame update
     void Start()
