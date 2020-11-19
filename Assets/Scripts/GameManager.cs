@@ -36,8 +36,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         if (instance == null) { instance = this; }
         else { Destroy(gameObject); }
-
-       // lives_text.text = "LIVES: " + lives;
     }
 
     public void brick_destroyed() 
