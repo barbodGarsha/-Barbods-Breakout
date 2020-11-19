@@ -33,9 +33,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        if (instance == null) { instance = this; }
-        else { Destroy(gameObject); }
+        if (instance == null) { Debug.Log("a"); instance = this; }
+        else { Debug.Log("b"); Destroy(gameObject); }
     }
 
     public void brick_destroyed() 
@@ -67,8 +66,6 @@ public class GameManager : MonoBehaviour
     void lose()
     {
         gameover_screen.SetActive(true);
-        gameover_main_text.SetActive(true);
-        gameover_score.SetActive(true);
         gameover_score.gameObject.GetComponent<TextMeshProUGUI>().SetText("Score: " + score);
         gameover_main_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("You Lost");
         game_status = status.GAMEOVER;
@@ -77,8 +74,6 @@ public class GameManager : MonoBehaviour
     void won() 
     {
         gameover_screen.SetActive(true);
-        gameover_main_text.SetActive(true);
-        gameover_score.SetActive(true);
         gameover_score.gameObject.GetComponent<TextMeshProUGUI>().SetText("Score: " + score);
         gameover_main_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("You Won");
         game_status = status.WON;
@@ -99,12 +94,20 @@ public class GameManager : MonoBehaviour
             {
                 reset();
             }
+            else if (Input.GetKeyDown(KeyCode.Escape)) 
+            {
+                SceneManager.LoadScene(0);
+            }
         }
         else if (game_status == status.WON)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 reset();
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(0);
             }
         }
         else if (game_status == status.PAUSE)
