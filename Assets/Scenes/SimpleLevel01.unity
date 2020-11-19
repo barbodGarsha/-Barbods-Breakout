@@ -2555,7 +2555,7 @@ GameObject:
   - component: {fileID: 1195431895}
   - component: {fileID: 1195431894}
   m_Layer: 5
-  m_Name: Gameover You Won
+  m_Name: gameover_main_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

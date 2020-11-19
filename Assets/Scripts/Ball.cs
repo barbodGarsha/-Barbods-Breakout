@@ -56,18 +56,21 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (GameManager.instance.game_status == GameManager.status.PLAYING)
         {
-            is_ball_thrown = true;
-        }
-        if (is_ball_thrown)
-        {
-            //The ball keeps moving till it hits something. then it changes it's direction
-            this.transform.position += to_vector3(direction) * speed * Time.deltaTime;
-        }
-        else
-        {
-            this.transform.position = new Vector3(paddle.transform.position.x, paddle.transform.position.y + BALL_OFFSET, 0);
+            if (Input.GetMouseButtonDown(0))
+            {
+                is_ball_thrown = true;
+            }
+            if (is_ball_thrown)
+            {
+                //The ball keeps moving till it hits something. then it changes it's direction
+                this.transform.position += to_vector3(direction) * speed * Time.deltaTime;
+            }
+            else
+            {
+                this.transform.position = new Vector3(paddle.transform.position.x, paddle.transform.position.y + BALL_OFFSET, 0);
+            }
         }
     }
 
