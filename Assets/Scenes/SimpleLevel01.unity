@@ -967,11 +967,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameover_screen: {fileID: 2094965114}
   gameover_score: {fileID: 520223334}
-  gameover_you_won: {fileID: 1195431892}
+  gameover_main_text: {fileID: 1195431892}
   score_text: {fileID: 497813536}
   lives_text: {fileID: 759892249}
+  game_status: 0
   bricks: 23
-  lives: 3
+  lives: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -2633,7 +2634,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 17
   m_textAlignment: 258
   m_characterSpacing: 0
   m_wordSpacing: 0
