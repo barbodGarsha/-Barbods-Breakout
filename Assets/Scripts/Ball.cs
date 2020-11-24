@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
@@ -42,11 +40,11 @@ public class Ball : MonoBehaviour
         return v3;
     }
 
-    void reset_ball() 
+    void reset_ball()
     {
         is_ball_thrown = false;
         paddle.transform.position = new Vector3(0, paddle.transform.position.y, 0);
-        this.transform.position = new Vector3(0, paddle.transform.position.y + BALL_OFFSET, 0); 
+        this.transform.position = new Vector3(0, paddle.transform.position.y + BALL_OFFSET, 0);
         direction = new Vector2(0, 1);
     }
     void Start()
@@ -85,7 +83,7 @@ public class Ball : MonoBehaviour
         {
             //Where did the ball hit the paddle?
             int x = hit_pos(this.transform.position, collision.transform.position, collision.collider.bounds.size.x);
-            
+
             //Right
             if (x == 1)
             {
@@ -134,7 +132,7 @@ public class Ball : MonoBehaviour
         {
             normalVector = collision.contacts[0].normal;
             direction = Vector3.Reflect(direction, normalVector);
-            direction.Normalize();  
+            direction.Normalize();
         }
 
 

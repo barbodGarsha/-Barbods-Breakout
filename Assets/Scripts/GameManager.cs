@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public enum status 
+    public enum status
     {
         PLAYING,
         PAUSE,
@@ -21,13 +18,13 @@ public class GameManager : MonoBehaviour
     public GameObject gameover_score;
     public GameObject gameover_main_text;
 
-    
+
     public Text score_text;
     public Text lives_text;
 
     public status game_status = status.PLAYING;
     public int bricks;
-    public int lives = 1; 
+    public int lives = 1;
     int score = 0;
 
     // Start is called before the first frame update
@@ -37,7 +34,7 @@ public class GameManager : MonoBehaviour
         else { Debug.Log("b"); Destroy(gameObject); }
     }
 
-    public void brick_destroyed() 
+    public void brick_destroyed()
     {
         bricks--;
         score += 25;
@@ -62,7 +59,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+
     void lose()
     {
         gameover_screen.SetActive(true);
@@ -71,7 +68,7 @@ public class GameManager : MonoBehaviour
         game_status = status.GAMEOVER;
     }
 
-    void won() 
+    void won()
     {
         gameover_screen.SetActive(true);
         gameover_score.gameObject.GetComponent<TextMeshProUGUI>().SetText("Score: " + score);
@@ -79,9 +76,9 @@ public class GameManager : MonoBehaviour
         game_status = status.WON;
     }
 
-    void reset() 
+    void reset()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        MySceneManager.reset_scene();
     }
 
     // Update is called once per frame
@@ -94,9 +91,9 @@ public class GameManager : MonoBehaviour
             {
                 reset();
             }
-            else if (Input.GetKeyDown(KeyCode.Escape)) 
+            else if (Input.GetKeyDown(KeyCode.Escape))
             {
-                SceneManager.LoadScene(0);
+                MySceneManager.load_menu_scene();
             }
         }
         else if (game_status == status.WON)
@@ -107,7 +104,7 @@ public class GameManager : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
-                SceneManager.LoadScene(0);
+                MySceneManager.load_menu_scene();
             }
         }
         else if (game_status == status.PAUSE)
