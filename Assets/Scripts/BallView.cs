@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class BallView : MonoBehaviour
 {
-    BallModel model;
+    public GameObject gamedata_gameobject;
+    GameData model;
     // Start is called before the first frame update
     void Start()
     {
-        model = gameObject.GetComponent<BallModel>();
+        model = gamedata_gameobject.GetComponent<GameData>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = model.pos;
+        this.transform.position = model.ball_model.pos;
     }
 }
