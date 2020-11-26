@@ -10107,12 +10107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd0334bdc47dbe4c97147352deddd22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clouds_objects:
-  - {fileID: 3090572023241124951}
-  - {fileID: 7717694378610926538}
-  - {fileID: 7717694379388750466}
-  - {fileID: 3090572021552130635}
-  - {fileID: 5624844124699284411}
+  clouds_objects: {fileID: 1193718581}
 --- !u!1 &1037579851
 GameObject:
   m_ObjectHideFlags: 0

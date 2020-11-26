@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class MenuApplication : MonoBehaviour
 {
-    public GameObject[] clouds_objects;
-    void clouds_init() 
+    public GameObject clouds_objects;
+    void clouds_init()
     {
-        foreach (GameObject g in clouds_objects)
-        {
-            g.AddComponent<CloudsModel>();
-            g.AddComponent<CloudsController>();
-            g.AddComponent<CloudsView>();
-        }
+        clouds_objects.AddComponent<CloudsModel>();
+        clouds_objects.AddComponent<CloudsController>();
+        clouds_objects.AddComponent<CloudsView>();
     }
     // Start is called before the first frame update
     void Start()

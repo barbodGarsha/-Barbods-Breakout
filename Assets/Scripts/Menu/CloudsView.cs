@@ -9,6 +9,10 @@ public class CloudsView : MonoBehaviour
     }
     void Update()
     {
-        transform.position = model.pos;
+        for (int i = 0; i < model.pos.Length; i++)
+        {
+            transform.GetChild(i).position = model.pos[i];
+        }
+        
     }
 }
