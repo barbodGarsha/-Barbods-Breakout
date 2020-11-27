@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class GameConroller : MonoBehaviour
 {
+    public GameObject paddle;
+    public GameObject ball;
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameData.instance.ball_model = new GameData.BallModel();
+        GameData.instance.ball_model.pos = ball.transform.position;
+
+        GameData.instance.paddle_model = new GameData.PaddleModel();
+        GameData.instance.paddle_model.pos = paddle.transform.position;
     }
 
     // Update is called once per frame

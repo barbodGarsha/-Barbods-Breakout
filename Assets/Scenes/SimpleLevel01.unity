@@ -406,6 +406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc986f9246c6604f9df26e0c0b460cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paddle: {fileID: 1546839943}
+  ball: {fileID: 2069464725}
 --- !u!1 &122802644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,7 +1252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55de9f3087c7c7e40ae97b4e24595326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamedata_gameobject: {fileID: 1001781357}
 --- !u!1 &540793250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,8 +2294,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game_status: 0
-  ball_model: {fileID: 0}
-  paddle_model: {fileID: 0}
 --- !u!4 &1001781359
 Transform:
   m_ObjectHideFlags: 0
@@ -2702,7 +2701,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a382ff6a4cca5945b8766af74a9d323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamedata_gameobject: {fileID: 1001781357}
 --- !u!1 &1147607624
 GameObject:
   m_ObjectHideFlags: 0
@@ -3762,7 +3760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0fd83487abd05479f0d90c26fd3702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamedata_gameobject: {fileID: 1001781357}
 --- !u!61 &1546839947
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5139,7 +5136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894dd1b0f6a63f64f9f3d4c59901b4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamedata_gameobject: {fileID: 1001781357}
 --- !u!1 &2094965114
 GameObject:
   m_ObjectHideFlags: 0

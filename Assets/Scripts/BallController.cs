@@ -4,42 +4,35 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    public GameObject gamedata_gameobject;
     GameData model;
-    // Start is called before the first frame update
-    void Start()
-    {
-        model = gamedata_gameobject.GetComponent<GameData>();
-
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (model.game_status == GameData.status.PLAYING)
+        if (GameData.instance.game_status == GameData.status.PLAYING)
         {
-            if (model.ball_model.is_simulation_on)
+            if (GameData.instance.ball_model.is_simulation_on)
             {
                 //The ball keeps moving till it hits something. then it changes it's direction
-                model.ball_model.pos += to_vector3(model.ball_model.direction) * GameData.BallModel.SPEED * Time.deltaTime;
+                GameData.instance.ball_model.pos += to_vector3(GameData.instance.ball_model.direction) * GameData.BallModel.SPEED * Time.deltaTime;
             }
             else
             {
-                model.ball_model.pos = new Vector3(model.paddle_model.pos.x, model.paddle_model.pos.y + GameData.BallModel.OFFSET, 0);
+                GameData.instance.ball_model.pos = new Vector3(GameData.instance.paddle_model.pos.x, GameData.instance.paddle_model.pos.y + GameData.BallModel.OFFSET, 0);
             }
         }
     }
 
     public void reset_ball()
     {
-        model.ball_model.is_simulation_on = false;
-        model.ball_model.pos = new Vector3(model.paddle_model.pos.x, model.paddle_model.pos.y + GameData.BallModel.OFFSET, 0);
-        model.ball_model.direction = new Vector2(0, 1);
+        GameData.instance.ball_model.is_simulation_on = false;
+        GameData.instance.ball_model.pos = new Vector3(GameData.instance.paddle_model.pos.x, GameData.instance.paddle_model.pos.y + GameData.BallModel.OFFSET, 0);
+        GameData.instance.ball_model.direction = new Vector2(0, 1);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!model.ball_model.is_simulation_on) { return; }
+        if (!GameData.instance.ball_model.is_simulation_on) { return; }
 
         Vector3 normalVector;
 
@@ -56,16 +49,16 @@ public class BallController : MonoBehaviour
             {
                 //then bounce the ball to the right
 
-                if (model.ball_model.direction.x >= -1 && model.ball_model.direction.x <= 0)
+                if (GameData.instance.ball_model.direction.x >= -1 && GameData.instance.ball_model.direction.x <= 0)
                 {
-                    model.ball_model.direction = this.transform.position - collision.transform.position;
-                    model.ball_model.direction.Normalize();
+                    GameData.instance.ball_model.direction = this.transform.position - collision.transform.position;
+                    GameData.instance.ball_model.direction.Normalize();
                 }
                 else
                 {
                     normalVector = collision.contacts[0].normal;
-                    model.ball_model.direction = Vector3.Reflect(model.ball_model.direction, normalVector);
-                    model.ball_model.direction.Normalize();
+                    GameData.instance.ball_model.direction = Vector3.Reflect(GameData.instance.ball_model.direction, normalVector);
+                    GameData.instance.ball_model.direction.Normalize();
 
                 }
             }
@@ -73,17 +66,17 @@ public class BallController : MonoBehaviour
             {
                 //then bounce the ball to the left
 
-                if (model.ball_model.direction.x <= 1 && model.ball_model.direction.x >= 0)
+                if (GameData.instance.ball_model.direction.x <= 1 && GameData.instance.ball_model.direction.x >= 0)
                 {
 
-                    model.ball_model.direction = this.transform.position - collision.transform.position;
-                    model.ball_model.direction.Normalize();
+                    GameData.instance.ball_model.direction = this.transform.position - collision.transform.position;
+                    GameData.instance.ball_model.direction.Normalize();
                 }
                 else
                 {
                     normalVector = collision.contacts[0].normal;
-                    model.ball_model.direction = Vector3.Reflect(model.ball_model.direction, normalVector);
-                    model.ball_model.direction.Normalize();
+                    GameData.instance.ball_model.direction = Vector3.Reflect(GameData.instance.ball_model.direction, normalVector);
+                    GameData.instance.ball_model.direction.Normalize();
 
                 }
             }
@@ -98,8 +91,8 @@ public class BallController : MonoBehaviour
         else // When the ball hits other objects in the game it should just bounce on it like always
         {
             normalVector = collision.contacts[0].normal;
-            model.ball_model.direction = Vector3.Reflect(model.ball_model.direction, normalVector);
-            model.ball_model.direction.Normalize();
+            GameData.instance.ball_model.direction = Vector3.Reflect(GameData.instance.ball_model.direction, normalVector);
+            GameData.instance.ball_model.direction.Normalize();
         }
 
 

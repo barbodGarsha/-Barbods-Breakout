@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallView : MonoBehaviour
+public class PaddleView : MonoBehaviour
 {
+
     GameData model;
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = GameData.instance.ball_model.pos;
+        transform.position = GameData.instance.paddle_model.pos;
     }
 }
