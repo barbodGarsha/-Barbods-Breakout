@@ -32,7 +32,7 @@ public class GameData : MonoBehaviour
         public Vector3 pos;
         public Vector2 direction = new Vector2(0, 1);
 
-        public bool is_simulation_on = false;
+        public bool is_simulation_on = true;
     }
 
     public BallModel ball_model;

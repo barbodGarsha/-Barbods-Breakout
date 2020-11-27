@@ -30,7 +30,7 @@ public class BallController : MonoBehaviour
         GameData.instance.ball_model.direction = new Vector2(0, 1);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    public void ball_hit(Collision2D collision)
     {
         if (!GameData.instance.ball_model.is_simulation_on) { return; }
 
