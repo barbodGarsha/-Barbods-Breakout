@@ -6,6 +6,21 @@ public class BallController : MonoBehaviour
 {
     GameData model;
 
+    private static BallController _instance;
+
+    public static BallController instance { get { return _instance; } }
+    void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -30,19 +45,22 @@ public class BallController : MonoBehaviour
         GameData.instance.ball_model.direction = new Vector2(0, 1);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    public void hit(Collision2D collision)
     {
-        if (!GameData.instance.ball_model.is_simulation_on) { return; }
-
+        if (collision.gameObject.tag == "Brick")
+        {
+            Destroy(collision.gameObject);
+        }
         Vector3 normalVector;
 
+        
         // in order to give the game a smooth and enjoable gameplay player needs to have more control over the ball
         // for example when we hit the ball with the right side of the paddle the ball goes to right
         // TODO: add more control over the ball
         if (collision.gameObject.tag == "Player")
         {
             //Where did the ball hit the paddle?
-            int x = hit_pos(this.transform.position, collision.transform.position, collision.collider.bounds.size.x);
+            int x = hit_pos(GameData.instance.ball_model.pos, collision.transform.position, collision.collider.bounds.size.x);
 
             //Right
             if (x == 1)
@@ -51,7 +69,7 @@ public class BallController : MonoBehaviour
 
                 if (GameData.instance.ball_model.direction.x >= -1 && GameData.instance.ball_model.direction.x <= 0)
                 {
-                    GameData.instance.ball_model.direction = this.transform.position - collision.transform.position;
+                    GameData.instance.ball_model.direction = GameData.instance.ball_model.pos - collision.transform.position;
                     GameData.instance.ball_model.direction.Normalize();
                 }
                 else
@@ -69,7 +87,7 @@ public class BallController : MonoBehaviour
                 if (GameData.instance.ball_model.direction.x <= 1 && GameData.instance.ball_model.direction.x >= 0)
                 {
 
-                    GameData.instance.ball_model.direction = this.transform.position - collision.transform.position;
+                    GameData.instance.ball_model.direction = GameData.instance.ball_model.pos - collision.transform.position;
                     GameData.instance.ball_model.direction.Normalize();
                 }
                 else
@@ -94,7 +112,7 @@ public class BallController : MonoBehaviour
             GameData.instance.ball_model.direction = Vector3.Reflect(GameData.instance.ball_model.direction, normalVector);
             GameData.instance.ball_model.direction.Normalize();
         }
-
+        
 
     }
 

@@ -31,7 +31,7 @@ public class PaddleModel
 
 public class GameData : MonoBehaviour
 {
-private static GameData _instance;
+    private static GameData _instance;
 
     public static GameData instance { get { return _instance; } }
 
