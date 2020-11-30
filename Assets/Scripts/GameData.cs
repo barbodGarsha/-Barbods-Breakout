@@ -1,7 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Ui 
+{
+    [Flags]
+    public enum UiUpdate
+    {
+        NONE = 0,
+        LIVES = 1 << 0,
+        SCORE = 1 << 1,
+        GAMEOVER_SCREEN = 1 << 2,
+        ALL = LIVES | SCORE | GAMEOVER_SCREEN
+    }
+
+    public UiUpdate ui_update = UiUpdate.ALL;
+}
 public class BallModel
 {
 
@@ -42,7 +57,7 @@ public class GameModel
     public status game_status = status.PLAYING;
     public int bricks;
     public int lives = 1;
-    int score = 0;
+    public int score = 0;
 
 }
 
@@ -74,4 +89,5 @@ public class GameData : MonoBehaviour
 
     public GameModel game_model = new GameModel();
 
+    public Ui ui_model = new Ui();
 }

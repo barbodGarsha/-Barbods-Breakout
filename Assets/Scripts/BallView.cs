@@ -19,6 +19,6 @@ public class BallView : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision) 
     {
-        BallController.instance.hit(collision);
+        GameConroller.instance.ball_hit(collision);
     }
 }
