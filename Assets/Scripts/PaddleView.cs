@@ -5,11 +5,15 @@ using UnityEngine;
 public class PaddleView : MonoBehaviour
 {
 
-    GameData model;
-
+    PaddleModel paddle_model;
+    void Start()
+    {
+        var data = GameData.instance;
+        paddle_model = data.paddle_model;
+    }
     // Update is called once per frame
     void Update()
     {
-        transform.position = GameData.instance.paddle_model.pos;
+        transform.position = paddle_model.pos;
     }
 }

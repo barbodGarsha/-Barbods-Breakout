@@ -28,6 +28,25 @@ public class PaddleModel
 
 }
 
+public class GameModel
+{
+    public enum status
+    {
+        PLAYING,
+        PAUSE,
+        WON,
+        GAMEOVER,
+        MENU
+    }
+
+    public status game_status = status.PLAYING;
+    public int bricks;
+    public int lives = 1;
+    int score = 0;
+
+}
+
+
 
 public class GameData : MonoBehaviour
 {
@@ -46,22 +65,13 @@ public class GameData : MonoBehaviour
             _instance = this;
         }
     }
-    
-    public enum status
-    {
-        PLAYING,
-        PAUSE,
-        WON,
-        GAMEOVER,
-        MENU
-    }
-
-    public status game_status = status.PLAYING;
 
 
 
     public BallModel ball_model = new BallModel();
 
     public PaddleModel paddle_model = new PaddleModel();
+
+    public GameModel game_model = new GameModel();
 
 }

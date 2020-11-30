@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class PaddleController : MonoBehaviour
 {
-    GameData model;
-    
-    // Start is called before the first frame update
+    GameModel game_model;
+    BallModel ball_model;
+    PaddleModel paddle_model;
+
     void Start()
     {
+        var data = GameData.instance;
+        game_model = data.game_model;
+        ball_model = data.ball_model;
+        paddle_model = data.paddle_model;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameData.instance.game_status == GameData.status.PLAYING)
+        if (game_model.game_status == GameModel.status.PLAYING)
         {
             Vector3 mouse_pos = Input.mousePosition;
             // Get distance the paddle is in front of the camera
-            mouse_pos.z = Mathf.Abs(GameData.instance.paddle_model.pos.z - Camera.main.transform.position.z);
+            mouse_pos.z = Mathf.Abs(paddle_model.pos.z - Camera.main.transform.position.z);
             mouse_pos = Camera.main.ScreenToWorldPoint(mouse_pos);
 
             //TODO: after designing a level the max and min value in Mathf.Clamp() function needs to change
-            GameData.instance.paddle_model.pos = new Vector2(Mathf.Clamp(mouse_pos.x, PaddleModel.LEFT_MAX, PaddleModel.RIGHT_MAX), GameData.instance.paddle_model.pos.y);
+            paddle_model.pos = new Vector2(Mathf.Clamp(mouse_pos.x, PaddleModel.LEFT_MAX, PaddleModel.RIGHT_MAX), paddle_model.pos.y);
 
             //----------------------------------------
             // Moving the paddle with kyboard 
@@ -39,6 +44,6 @@ public class PaddleController : MonoBehaviour
 
     public void paddle_pos_reset() 
     {
-        GameData.instance.paddle_model.pos = new Vector3(0, -5.95f, 0);
+        paddle_model.pos = new Vector3(0, -5.95f, 0);
     } 
 }
