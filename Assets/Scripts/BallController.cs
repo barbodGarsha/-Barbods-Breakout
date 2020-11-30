@@ -14,11 +14,11 @@ public class BallController : MonoBehaviour
             if (GameData.instance.ball_model.is_simulation_on)
             {
                 //The ball keeps moving till it hits something. then it changes it's direction
-                GameData.instance.ball_model.pos += to_vector3(GameData.instance.ball_model.direction) * GameData.BallModel.SPEED * Time.deltaTime;
+                GameData.instance.ball_model.pos += to_vector3(GameData.instance.ball_model.direction) * BallModel.SPEED * Time.deltaTime;
             }
             else
             {
-                GameData.instance.ball_model.pos = new Vector3(GameData.instance.paddle_model.pos.x, GameData.instance.paddle_model.pos.y + GameData.BallModel.OFFSET, 0);
+                GameData.instance.ball_model.pos = new Vector3(GameData.instance.paddle_model.pos.x, GameData.instance.paddle_model.pos.y + BallModel.OFFSET, 0);
             }
         }
     }
@@ -26,11 +26,11 @@ public class BallController : MonoBehaviour
     public void reset_ball()
     {
         GameData.instance.ball_model.is_simulation_on = false;
-        GameData.instance.ball_model.pos = new Vector3(GameData.instance.paddle_model.pos.x, GameData.instance.paddle_model.pos.y + GameData.BallModel.OFFSET, 0);
+        GameData.instance.ball_model.pos = new Vector3(GameData.instance.paddle_model.pos.x, GameData.instance.paddle_model.pos.y + BallModel.OFFSET, 0);
         GameData.instance.ball_model.direction = new Vector2(0, 1);
     }
 
-    public void ball_hit(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (!GameData.instance.ball_model.is_simulation_on) { return; }
 

@@ -2,17 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameData : MonoBehaviour
+public class BallModel
 {
 
-    public static GameData instance = null;
+    public const float OFFSET = 0.377f;
+    public const float SPEED = 10f;
 
-    void Start()
+    public Vector3 pos;
+    public Vector2 direction = new Vector2(0, 1);
+
+    public bool is_simulation_on = true;
+    public bool ball_hit = false;
+    public Collision2D col;
+}
+
+public class PaddleModel
+{
+    //Just in case we added playing with keyboard
+    public const float SPEED = 20f;
+
+    public const float LEFT_MAX = -10.06f;
+    public const float RIGHT_MAX = 10.06f;
+
+    public Vector3 pos = new Vector3(0, 0, 0);
+
+}
+
+
+public class GameData : MonoBehaviour
+{
+private static GameData _instance;
+
+    public static GameData instance { get { return _instance; } }
+
+    void Awake()
     {
-        if (instance == null) { instance = this; }
-        else { Destroy(gameObject); }
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
     }
-
+    
     public enum status
     {
         PLAYING,
@@ -21,34 +55,13 @@ public class GameData : MonoBehaviour
         GAMEOVER,
         MENU
     }
+
     public status game_status = status.PLAYING;
 
-    public class BallModel
-    {
 
-        public const float OFFSET = 0.377f;
-        public const float SPEED = 20f;
 
-        public Vector3 pos;
-        public Vector2 direction = new Vector2(0, 1);
+    public BallModel ball_model = new BallModel();
 
-        public bool is_simulation_on = true;
-    }
-
-    public BallModel ball_model;
-    public class PaddleModel
-    {
-        //Just in case we added playing with keyboard
-        public const float SPEED = 20f;
-
-        public const float LEFT_MAX = -10.06f;
-        public const float RIGHT_MAX = 10.06f;
-
-        public Vector3 pos = new Vector3(0, 0, 0);
-
-        public bool is_simulation_on;
-    }
-
-    public PaddleModel paddle_model;
+    public PaddleModel paddle_model = new PaddleModel();
 
 }

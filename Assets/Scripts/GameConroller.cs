@@ -9,10 +9,7 @@ public class GameConroller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameData.instance.ball_model = new GameData.BallModel();
         GameData.instance.ball_model.pos = ball.transform.position;
-
-        GameData.instance.paddle_model = new GameData.PaddleModel();
         GameData.instance.paddle_model.pos = paddle.transform.position;
     }
 
