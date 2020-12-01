@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 14218032}
   - component: {fileID: 14218031}
   - component: {fileID: 14218030}
-  - component: {fileID: 14218029}
   m_Layer: 0
   m_Name: Brick Blue
   m_TagString: Brick
@@ -140,18 +139,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &14218029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14218028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &14218030
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -253,7 +240,6 @@ GameObject:
   - component: {fileID: 44560681}
   - component: {fileID: 44560680}
   - component: {fileID: 44560679}
-  - component: {fileID: 44560678}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -261,18 +247,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &44560678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44560677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &44560679
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -419,7 +393,6 @@ GameObject:
   - component: {fileID: 122802648}
   - component: {fileID: 122802647}
   - component: {fileID: 122802646}
-  - component: {fileID: 122802645}
   m_Layer: 0
   m_Name: Brick Blue
   m_TagString: Brick
@@ -427,18 +400,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &122802645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122802644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &122802646
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -540,7 +501,6 @@ GameObject:
   - component: {fileID: 183650219}
   - component: {fileID: 183650218}
   - component: {fileID: 183650217}
-  - component: {fileID: 183650216}
   m_Layer: 0
   m_Name: Brick Blue
   m_TagString: Brick
@@ -548,18 +508,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &183650216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183650215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &183650217
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -661,7 +609,6 @@ GameObject:
   - component: {fileID: 305843159}
   - component: {fileID: 305843158}
   - component: {fileID: 305843157}
-  - component: {fileID: 305843156}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -669,18 +616,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &305843156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305843155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &305843157
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -782,7 +717,6 @@ GameObject:
   - component: {fileID: 443597014}
   - component: {fileID: 443597013}
   - component: {fileID: 443597012}
-  - component: {fileID: 443597011}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -790,18 +724,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &443597011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443597010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &443597012
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1527,7 +1449,6 @@ GameObject:
   - component: {fileID: 624162658}
   - component: {fileID: 624162657}
   - component: {fileID: 624162656}
-  - component: {fileID: 624162655}
   m_Layer: 0
   m_Name: Brick Blue
   m_TagString: Brick
@@ -1535,18 +1456,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &624162655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624162654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &624162656
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1648,7 +1557,6 @@ GameObject:
   - component: {fileID: 723870244}
   - component: {fileID: 723870243}
   - component: {fileID: 723870242}
-  - component: {fileID: 723870241}
   m_Layer: 0
   m_Name: Brick Blue
   m_TagString: Brick
@@ -1656,18 +1564,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &723870241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723870240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &723870242
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1769,7 +1665,6 @@ GameObject:
   - component: {fileID: 757818611}
   - component: {fileID: 757818610}
   - component: {fileID: 757818609}
-  - component: {fileID: 757818608}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -1777,18 +1672,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &757818608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 757818607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &757818609
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2124,7 +2007,6 @@ GameObject:
   - component: {fileID: 945089032}
   - component: {fileID: 945089031}
   - component: {fileID: 945089030}
-  - component: {fileID: 945089029}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -2132,18 +2014,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &945089029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945089028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &945089030
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2288,7 +2158,6 @@ GameObject:
   - component: {fileID: 1018011208}
   - component: {fileID: 1018011207}
   - component: {fileID: 1018011206}
-  - component: {fileID: 1018011205}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -2296,18 +2165,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1018011205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018011204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1018011206
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2517,7 +2374,6 @@ GameObject:
   - component: {fileID: 1088265043}
   - component: {fileID: 1088265042}
   - component: {fileID: 1088265041}
-  - component: {fileID: 1088265040}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -2525,18 +2381,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1088265040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1088265039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1088265041
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2681,7 +2525,6 @@ GameObject:
   - component: {fileID: 1147607628}
   - component: {fileID: 1147607627}
   - component: {fileID: 1147607626}
-  - component: {fileID: 1147607625}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -2689,18 +2532,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1147607625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147607624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1147607626
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2802,7 +2633,6 @@ GameObject:
   - component: {fileID: 1183608890}
   - component: {fileID: 1183608889}
   - component: {fileID: 1183608888}
-  - component: {fileID: 1183608887}
   m_Layer: 0
   m_Name: Brick Blue
   m_TagString: Brick
@@ -2810,18 +2640,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1183608887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183608886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1183608888
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3311,7 +3129,6 @@ GameObject:
   - component: {fileID: 1432475729}
   - component: {fileID: 1432475728}
   - component: {fileID: 1432475727}
-  - component: {fileID: 1432475726}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -3319,18 +3136,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1432475726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1432475725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1432475727
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3766,7 +3571,6 @@ GameObject:
   - component: {fileID: 1621514078}
   - component: {fileID: 1621514077}
   - component: {fileID: 1621514076}
-  - component: {fileID: 1621514075}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -3774,18 +3578,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1621514075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621514074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1621514076
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3887,7 +3679,6 @@ GameObject:
   - component: {fileID: 1677511330}
   - component: {fileID: 1677511329}
   - component: {fileID: 1677511328}
-  - component: {fileID: 1677511327}
   m_Layer: 0
   m_Name: Brick Blue
   m_TagString: Brick
@@ -3895,18 +3686,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1677511327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1677511326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1677511328
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4008,7 +3787,6 @@ GameObject:
   - component: {fileID: 1717546571}
   - component: {fileID: 1717546570}
   - component: {fileID: 1717546569}
-  - component: {fileID: 1717546568}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -4016,18 +3794,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1717546568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717546567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1717546569
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4129,7 +3895,6 @@ GameObject:
   - component: {fileID: 1723128129}
   - component: {fileID: 1723128128}
   - component: {fileID: 1723128127}
-  - component: {fileID: 1723128126}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -4137,18 +3902,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1723128126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723128125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1723128127
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4336,7 +4089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd14384b3dc8174abec63ad8acd4a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameover_screen: {fileID: 2094965114}
+  screen: {fileID: 2094965114}
   gameover_score: {fileID: 520223334}
   gameover_main_text: {fileID: 1195431892}
   score_text: {fileID: 497813536}
@@ -4460,7 +4213,6 @@ GameObject:
   - component: {fileID: 1845514549}
   - component: {fileID: 1845514548}
   - component: {fileID: 1845514547}
-  - component: {fileID: 1845514546}
   m_Layer: 0
   m_Name: Brick Blue
   m_TagString: Brick
@@ -4468,18 +4220,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1845514546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845514545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1845514547
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4689,7 +4429,6 @@ GameObject:
   - component: {fileID: 1930982227}
   - component: {fileID: 1930982226}
   - component: {fileID: 1930982225}
-  - component: {fileID: 1930982224}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -4697,18 +4436,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1930982224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930982223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1930982225
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4911,7 +4638,6 @@ GameObject:
   - component: {fileID: 1993066604}
   - component: {fileID: 1993066603}
   - component: {fileID: 1993066602}
-  - component: {fileID: 1993066601}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -4919,18 +4645,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1993066601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993066600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1993066602
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5166,7 +4880,7 @@ GameObject:
   - component: {fileID: 2094965117}
   - component: {fileID: 2094965116}
   m_Layer: 5
-  m_Name: Gameover Screen
+  m_Name: Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5243,7 +4957,6 @@ GameObject:
   - component: {fileID: 2142301549}
   - component: {fileID: 2142301548}
   - component: {fileID: 2142301547}
-  - component: {fileID: 2142301546}
   m_Layer: 0
   m_Name: Brick Red
   m_TagString: Brick
@@ -5251,18 +4964,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2142301546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142301545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652256804584cfb429aa724786904de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &2142301547
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ using TMPro;
 
 public class UiView : MonoBehaviour
 {
-    public GameObject gameover_screen;
+    public GameObject screen;
     public GameObject gameover_score;
     public GameObject gameover_main_text;
 
@@ -24,7 +24,6 @@ public class UiView : MonoBehaviour
         game_model = data.game_model;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if ((ui_model.ui_update & Ui.UiUpdate.ALL) != 0)
@@ -37,22 +36,22 @@ public class UiView : MonoBehaviour
             {
                 score_text.text = "SCORE: " + game_model.score;
             }
-            if ((ui_model.ui_update & Ui.UiUpdate.GAMEOVER_SCREEN) == Ui.UiUpdate.GAMEOVER_SCREEN)
+            if ((ui_model.ui_update & Ui.UiUpdate.SCREEN) == Ui.UiUpdate.SCREEN)
             {
                 switch (game_model.game_status)
                 {
                     case GameModel.status.PLAYING:
-                        gameover_screen.SetActive(false);
+                        screen.SetActive(false);
                         break;
                     case GameModel.status.PAUSE:
                         break;
                     case GameModel.status.WON:
-                        gameover_screen.SetActive(true);
+                        screen.SetActive(true);
                         gameover_score.gameObject.GetComponent<TextMeshProUGUI>().SetText("Score: " + game_model.score);
                         gameover_main_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("You Won");
                         break;
                     case GameModel.status.GAMEOVER:
-                        gameover_screen.SetActive(true);
+                        screen.SetActive(true);
                         gameover_score.gameObject.GetComponent<TextMeshProUGUI>().SetText("Score: " + game_model.score);
                         gameover_main_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("You Lost");
                         break;

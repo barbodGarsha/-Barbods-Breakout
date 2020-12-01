@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     }
 
     public static GameManager instance = null;
-    public GameObject gameover_screen;
+    public GameObject screen;
     public GameObject gameover_score;
     public GameObject gameover_main_text;
 
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
 
     void lose()
     {
-        gameover_screen.SetActive(true);
+        screen.SetActive(true);
         gameover_score.gameObject.GetComponent<TextMeshProUGUI>().SetText("Score: " + score);
         gameover_main_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("You Lost");
         game_status = status.GAMEOVER;
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     void won()
     {
-        gameover_screen.SetActive(true);
+        screen.SetActive(true);
         gameover_score.gameObject.GetComponent<TextMeshProUGUI>().SetText("Score: " + score);
         gameover_main_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("You Won");
         game_status = status.WON;

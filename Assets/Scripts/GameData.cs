@@ -11,8 +11,8 @@ public class Ui
         NONE = 0,
         LIVES = 1 << 0,
         SCORE = 1 << 1,
-        GAMEOVER_SCREEN = 1 << 2,
-        ALL = LIVES | SCORE | GAMEOVER_SCREEN
+        SCREEN = 1 << 2,
+        ALL = LIVES | SCORE | SCREEN
     }
 
     public UiUpdate ui_update = UiUpdate.ALL;
@@ -26,7 +26,7 @@ public class BallModel
     public Vector3 pos;
     public Vector2 direction = new Vector2(0, 1);
 
-    public bool is_simulation_on = true;
+    public bool is_simulation_on = false;
     public bool ball_hit = false;
     public Collision2D col;
 }
@@ -50,13 +50,12 @@ public class GameModel
         PLAYING,
         PAUSE,
         WON,
-        GAMEOVER,
-        MENU
+        GAMEOVER
     }
 
     public status game_status = status.PLAYING;
-    public int bricks;
-    public int lives = 1;
+    public int bricks = 23;
+    public int lives = 3;
     public int score = 0;
 
 }

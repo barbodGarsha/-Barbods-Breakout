@@ -30,15 +30,13 @@ public class BallController : MonoBehaviour
         ball_model = data.ball_model;
         paddle_model = data.paddle_model;
     }
-    // Update is called once per frame
+
     void Update()
     {
-
         if (game_model.game_status == GameModel.status.PLAYING)
         {
             if (ball_model.is_simulation_on)
             {
-                //The ball keeps moving till it hits something. then it changes it's direction
                 ball_model.pos += to_vector3(ball_model.direction) * BallModel.SPEED * Time.deltaTime;
             }
             else
@@ -57,10 +55,6 @@ public class BallController : MonoBehaviour
 
     public void hit(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Brick")
-        {
-            Destroy(collision.gameObject);
-        }
         Vector3 normalVector;
 
 
@@ -110,12 +104,6 @@ public class BallController : MonoBehaviour
             }
 
         }
-        else if (collision.gameObject.tag == "Floor")
-        {
-            //GameManager.instance.ball_hit_floor();
-            //reset_ball();
-
-        }
         else // When the ball hits other objects in the game it should just bounce on it like always
         {
             normalVector = collision.contacts[0].normal;
@@ -148,7 +136,6 @@ public class BallController : MonoBehaviour
         return 0;
     }
 
-    //Turns Vector2 to a Vector3
     Vector3 to_vector3(Vector2 v2)
     {
         Vector3 v3 = new Vector3(v2.x, v2.y, 0f);
