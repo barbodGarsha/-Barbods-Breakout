@@ -29,6 +29,7 @@ public class BallController : MonoBehaviour
         game_model = data.game_model;
         ball_model = data.ball_model;
         paddle_model = data.paddle_model;
+
     }
 
     void Update()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameConroller : MonoBehaviour
 {
+    public GameObject Bricks;
 
     private static GameConroller _instance;
     public static GameConroller instance { get { return _instance; } }
@@ -35,6 +36,8 @@ public class GameConroller : MonoBehaviour
         ball_model = data.ball_model;
         paddle_model = data.paddle_model;
         ui_model = data.ui_model;
+
+        game_model.bricks = Bricks.transform.childCount;
 
         ball_model.pos = ball.transform.position;
         paddle_model.pos = paddle.transform.position;

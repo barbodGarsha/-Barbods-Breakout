@@ -380,6 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc986f9246c6604f9df26e0c0b460cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bricks: {fileID: 1772934441}
   paddle: {fileID: 1546839943}
   ball: {fileID: 2069464725}
 --- !u!1 &122802644
