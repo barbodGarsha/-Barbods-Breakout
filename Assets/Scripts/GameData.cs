@@ -12,7 +12,7 @@ public class Ui
         LIVES = 1 << 0,
         SCORE = 1 << 1,
         SCREEN = 1 << 2,
-        ALL = LIVES | SCORE | SCREEN
+        ALL = LIVES | SCORE
     }
 
     public UiUpdate ui_update = UiUpdate.ALL;
@@ -79,8 +79,6 @@ public class GameData : MonoBehaviour
             _instance = this;
         }
     }
-
-
 
     public BallModel ball_model = new BallModel();
 
