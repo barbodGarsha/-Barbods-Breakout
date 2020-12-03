@@ -86,6 +86,7 @@ public class GameConroller : MonoBehaviour
         game_model.bricks--;
         game_model.score += 25;
         ui_model.ui_update |= Ui.UiUpdate.SCORE;
+
         if (game_model.bricks == 0)
         {
             won();
@@ -128,14 +129,17 @@ public class GameConroller : MonoBehaviour
             case "Brick":
                 Destroy(collision.gameObject);
                 brick_destroyed();
+                SoundEffects.instance.brick_destroyed();
                 break;
             case "Floor":
                 ball_hit_floor();
                 BallController.instance.reset_ball();
                 break;
             default:
+                SoundEffects.instance.ball_hit();
                 break;
         }
+
         BallController.instance.hit(collision);
     }
 
