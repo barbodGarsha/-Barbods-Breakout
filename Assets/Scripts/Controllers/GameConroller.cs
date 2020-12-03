@@ -52,15 +52,23 @@ public class GameConroller : MonoBehaviour
                 {
                     ball_model.is_simulation_on = true;
                 }
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    game_model.game_status = GameModel.status.PAUSE;
+                }
                 break;
             case GameModel.status.PAUSE:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    game_model.game_status = GameModel.status.PLAYING;
+                }
                 break;
             case GameModel.status.WON:
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     reset();
                 }
-                else if (Input.GetKeyDown(KeyCode.Escape))
+                else if (Input.GetKeyDown(KeyCode.Backspace))
                 {
                     MySceneManager.load_menu_scene();
                 }
@@ -70,7 +78,7 @@ public class GameConroller : MonoBehaviour
                 {
                     reset();
                 }
-                else if (Input.GetKeyDown(KeyCode.Escape))
+                else if (Input.GetKeyDown(KeyCode.Backspace))
                 {
                     MySceneManager.load_menu_scene();
                 }
