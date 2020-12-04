@@ -60,7 +60,21 @@ public class GameModel
 
 }
 
+public class BricksModel 
+{
+    public enum BricksType
+    {
+        RED,
+        BLUE
+    }
+    public string name;
+    public GameObject g;
+    public Sprite sprite;
+    public BricksType type = BricksType.BLUE;
+    public int lives = 1;
+    public bool is_changed = true;
 
+}
 
 public class GameData : MonoBehaviour
 {
@@ -87,4 +101,6 @@ public class GameData : MonoBehaviour
     public GameModel game_model = new GameModel();
 
     public Ui ui_model = new Ui();
+
+    public BricksModel[] brick_model = new BricksModel[2];
 }

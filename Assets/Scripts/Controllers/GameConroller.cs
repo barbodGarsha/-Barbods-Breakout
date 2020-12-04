@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class GameConroller : MonoBehaviour
 {
-    public GameObject Bricks;
+
+    public Sprite sprite_red, sprite_blue;
+    public Sprite sprite_red_broke, sprite_blue_broke;
+
+    public GameObject bricks;
 
     private static GameConroller _instance;
     public static GameConroller instance { get { return _instance; } }
@@ -27,7 +31,34 @@ public class GameConroller : MonoBehaviour
     BallModel ball_model;
     PaddleModel paddle_model;
     Ui ui_model;
+    BricksModel[] brick_model;
 
+    void bricks_init()
+    {
+        for (int i = 0; i < game_model.bricks; i++)
+        {
+            brick_model[i] = new BricksModel();
+            brick_model[i].g = bricks.transform.GetChild(i).gameObject;
+            switch (bricks.transform.GetChild(i).name)
+            {
+                case "Brick Blue":
+                    brick_model[i].type = BricksModel.BricksType.BLUE;
+                    brick_model[i].sprite = sprite_blue;
+                    brick_model[i].lives = 1; //For Now
+                    break;
+                case "Brick Red":
+                    brick_model[i].type = BricksModel.BricksType.RED;
+                    brick_model[i].sprite = sprite_red;
+                    brick_model[i].lives = 2; //For Now
+                    break;
+                default:
+                    break;
+            }
+            bricks.transform.GetChild(i).name = "Brick" + i;
+            brick_model[i].name = "Brick" + i;
+        }
+
+    }
 
     void Start()
     {
@@ -37,10 +68,15 @@ public class GameConroller : MonoBehaviour
         paddle_model = data.paddle_model;
         ui_model = data.ui_model;
 
-        game_model.bricks = Bricks.transform.childCount;
+        game_model.bricks = bricks.transform.childCount;
+        data.brick_model = new BricksModel[game_model.bricks];
+        brick_model = data.brick_model;
+        bricks_init();
 
         ball_model.pos = ball.transform.position;
         paddle_model.pos = paddle.transform.position;
+
+        Debug.Log(brick_model.Length);
     }
 
     void Update()
@@ -135,7 +171,25 @@ public class GameConroller : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Brick":
-                Destroy(collision.gameObject);
+                foreach (var brick in brick_model)
+                {
+                    if (brick.name == collision.gameObject.name)
+                    {
+                        brick.lives--;
+                        switch (brick.type)
+                        {
+                            case BricksModel.BricksType.RED:
+                                brick.sprite = sprite_red_broke;
+                                break;
+                            case BricksModel.BricksType.BLUE:
+                                break;
+                            default:
+                                break;
+                        }
+                        brick.is_changed = true;
+                        break;
+                    }
+                }
                 brick_destroyed();
                 SoundEffects.instance.brick_destroyed();
                 break;

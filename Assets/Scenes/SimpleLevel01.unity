@@ -488,7 +488,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc986f9246c6604f9df26e0c0b460cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bricks: {fileID: 1772934441}
+  sprite_red: {fileID: 21300000, guid: a95f0ffcfe9d0b342a9fef7d3742f678, type: 3}
+  sprite_blue: {fileID: 21300000, guid: d8bca4dfb2b8dc749b8dc23f484156a3, type: 3}
+  sprite_red_broke: {fileID: 21300000, guid: 9fdae7f172147fd4b8a6fbf9c4617cb0, type: 3}
+  sprite_blue_broke: {fileID: 21300000, guid: 9d9cc758e43482546847e0d1ea782238, type: 3}
+  bricks: {fileID: 1772934441}
   paddle: {fileID: 1546839943}
   ball: {fileID: 2069464725}
 --- !u!1 &96109443
@@ -7386,6 +7390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1772934442}
+  - component: {fileID: 1772934443}
   m_Layer: 0
   m_Name: Bricks
   m_TagString: Untagged
@@ -7465,6 +7470,18 @@ Transform:
   m_Father: {fileID: 1193303266}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1772934443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772934441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b88354206be9f47bf06face7e800ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1774690894
 GameObject:
   m_ObjectHideFlags: 0
