@@ -65,7 +65,8 @@ public class BricksModel
     public enum BricksType
     {
         RED,
-        BLUE
+        BLUE,
+        UNBREAKABLE
     }
     public string name;
     public GameObject g;

@@ -15,8 +15,8 @@ public class BricksView : MonoBehaviour
         game_model = data.game_model;
         brick_model = data.brick_model;
 
-        sprite_renderer = new SpriteRenderer[game_model.bricks];
-        for (int i = 0; i < game_model.bricks; i++)
+        sprite_renderer = new SpriteRenderer[brick_model.Length];
+        for (int i = 0; i < brick_model.Length; i++)
         {
             sprite_renderer[i] = gameObject.transform.GetChild(i).GetComponent<SpriteRenderer>();
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameConroller : MonoBehaviour
 {
 
-    public Sprite sprite_red, sprite_blue;
+    public Sprite sprite_red, sprite_blue, sprite_u;
     public Sprite sprite_red_broke, sprite_blue_broke;
 
     public GameObject bricks;
@@ -35,7 +35,7 @@ public class GameConroller : MonoBehaviour
 
     void bricks_init()
     {
-        for (int i = 0; i < game_model.bricks; i++)
+        for (int i = 0; i < brick_model.Length; i++)
         {
             brick_model[i] = new BricksModel();
             brick_model[i].g = bricks.transform.GetChild(i).gameObject;
@@ -50,6 +50,11 @@ public class GameConroller : MonoBehaviour
                     brick_model[i].type = BricksModel.BricksType.RED;
                     brick_model[i].sprite = sprite_red;
                     brick_model[i].lives = 2; //For Now
+                    break;
+                case "Brick Unbreakable":
+                    brick_model[i].type = BricksModel.BricksType.UNBREAKABLE;
+                    brick_model[i].sprite = sprite_u;
+                    game_model.bricks--;
                     break;
                 default:
                     break;
@@ -136,17 +141,6 @@ public class GameConroller : MonoBehaviour
     }
 
 
-    void ball_hit_floor()
-    {
-        game_model.lives--;
-        ui_model.ui_update |= Ui.UiUpdate.LIVES;
-        if (game_model.lives == 0)
-        {
-            lose();
-        }
-    }
-
-
     void lose()
     {      
         game_model.game_status = GameModel.status.GAMEOVER;
@@ -164,46 +158,67 @@ public class GameConroller : MonoBehaviour
         MySceneManager.reset_scene();
     }
 
+
+    void ball_hit_floor()
+    {
+        game_model.lives--;
+        ui_model.ui_update |= Ui.UiUpdate.LIVES;
+        if (game_model.lives == 0)
+        {
+            lose();
+        }
+        BallController.instance.reset_ball();
+    }
+
+
+    void ball_hit_brick(Collision2D collision) 
+    {
+        foreach (var brick in brick_model)
+        {
+            if (brick.name == collision.gameObject.name)
+            {
+                brick.lives--;
+                switch (brick.type)
+                {
+                    case BricksModel.BricksType.RED:
+                        brick.sprite = sprite_red_broke;
+                        break;
+                    case BricksModel.BricksType.BLUE:
+                        break;
+                    case BricksModel.BricksType.UNBREAKABLE:
+                        BallController.instance.hit(collision);
+                        SoundEffects.instance.ball_hit();
+                        return;
+                    default:
+                        break;
+                }
+                brick.is_changed = true;
+                if (brick.lives == 0)
+                {
+                    brick_destroyed();
+                }
+                break;
+            }
+        }
+        SoundEffects.instance.brick_destroyed();
+        BallController.instance.hit(collision);
+    }
     public void ball_hit(Collision2D collision) 
     {
         switch (collision.gameObject.tag)
         {
             case "Brick":
-                foreach (var brick in brick_model)
-                {
-                    if (brick.name == collision.gameObject.name)
-                    {
-                        brick.lives--;
-                        switch (brick.type)
-                        {
-                            case BricksModel.BricksType.RED:
-                                brick.sprite = sprite_red_broke;
-                                break;
-                            case BricksModel.BricksType.BLUE:
-                                break;
-                            default:
-                                break;
-                        }
-                        brick.is_changed = true;
-                        if (brick.lives == 0)
-                        {
-                            brick_destroyed();
-                        }
-                        break;
-                    }
-                }
-                SoundEffects.instance.brick_destroyed();
+                ball_hit_brick(collision);
                 break;
             case "Floor":
                 ball_hit_floor();
-                BallController.instance.reset_ball();
                 return;
             default:
                 SoundEffects.instance.ball_hit();
+                BallController.instance.hit(collision);
                 break;
         }
 
-        BallController.instance.hit(collision);
     }
 
 }
