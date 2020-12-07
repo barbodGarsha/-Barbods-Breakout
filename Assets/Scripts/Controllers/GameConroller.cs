@@ -75,8 +75,6 @@ public class GameConroller : MonoBehaviour
 
         ball_model.pos = ball.transform.position;
         paddle_model.pos = paddle.transform.position;
-
-        Debug.Log(brick_model.Length);
     }
 
     void Update()
@@ -187,16 +185,19 @@ public class GameConroller : MonoBehaviour
                                 break;
                         }
                         brick.is_changed = true;
+                        if (brick.lives == 0)
+                        {
+                            brick_destroyed();
+                        }
                         break;
                     }
                 }
-                brick_destroyed();
                 SoundEffects.instance.brick_destroyed();
                 break;
             case "Floor":
                 ball_hit_floor();
                 BallController.instance.reset_ball();
-                break;
+                return;
             default:
                 SoundEffects.instance.ball_hit();
                 break;

@@ -32,7 +32,7 @@ public class BallController : MonoBehaviour
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (game_model.game_status == GameModel.status.PLAYING)
         {

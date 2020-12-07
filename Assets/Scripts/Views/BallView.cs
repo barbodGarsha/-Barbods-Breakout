@@ -12,7 +12,7 @@ public class BallView : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         this.transform.position = ball_model.pos;
     }
