@@ -5,10 +5,12 @@ using UnityEngine;
 public class GameConroller : MonoBehaviour
 {
 
-    public Sprite sprite_red, sprite_blue, sprite_u;
+    public Sprite sprite_red, sprite_blue, sprite_unbreakable;
     public Sprite sprite_red_broke, sprite_blue_broke;
 
     public GameObject bricks;
+
+    public GameObject Extra_live_prefab;
 
     private static GameConroller _instance;
     public static GameConroller instance { get { return _instance; } }
@@ -53,7 +55,7 @@ public class GameConroller : MonoBehaviour
                     break;
                 case "Brick Unbreakable":
                     brick_model[i].type = BricksModel.BricksType.UNBREAKABLE;
-                    brick_model[i].sprite = sprite_u;
+                    brick_model[i].sprite = sprite_unbreakable;
                     game_model.bricks--;
                     break;
                 default:
@@ -63,8 +65,28 @@ public class GameConroller : MonoBehaviour
             brick_model[i].name = "Brick" + i;
         }
 
+        int extra_live_index;
+        do
+        {
+            extra_live_index = Random.Range(0, brick_model.Length);
+        } while (brick_model[extra_live_index].type == BricksModel.BricksType.UNBREAKABLE);
+        brick_model[extra_live_index].pickup = BricksModel.Pickup.EXTRA_LIVE;
+
+
     }
 
+    public void pickup(string name) 
+    {
+        switch (name)
+        {
+            case "Extra Live":
+                game_model.lives++;
+                ui_model.ui_update |= Ui.UiUpdate.LIVES;
+                break;
+            default:
+                break;
+        }
+    }
     void Start()
     {
         var data = GameData.instance;
@@ -195,6 +217,15 @@ public class GameConroller : MonoBehaviour
                 brick.is_changed = true;
                 if (brick.lives == 0)
                 {
+                    switch (brick.pickup)
+                    {
+                        case BricksModel.Pickup.EXTRA_LIVE:
+                            var temp = Instantiate(Extra_live_prefab, brick.g.transform.position, Quaternion.identity);
+                            temp.name = "Extra Live";
+                            break;
+                        default:
+                            break;
+                    }
                     brick_destroyed();
                 }
                 break;

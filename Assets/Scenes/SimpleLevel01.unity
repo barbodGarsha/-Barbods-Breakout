@@ -490,9 +490,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite_red: {fileID: 21300000, guid: a95f0ffcfe9d0b342a9fef7d3742f678, type: 3}
   sprite_blue: {fileID: 21300000, guid: d8bca4dfb2b8dc749b8dc23f484156a3, type: 3}
+  sprite_unbreakable: {fileID: 21300000, guid: 89b38a4013b1a9d40a016f3c29df8d1f, type: 3}
   sprite_red_broke: {fileID: 21300000, guid: 9fdae7f172147fd4b8a6fbf9c4617cb0, type: 3}
   sprite_blue_broke: {fileID: 21300000, guid: 9d9cc758e43482546847e0d1ea782238, type: 3}
   bricks: {fileID: 1772934441}
+  Extra_live_prefab: {fileID: 3295367446137107073, guid: 0489c787f4727c44499b1c40cae11d85,
+    type: 3}
   paddle: {fileID: 1546839943}
   ball: {fileID: 2069464725}
 --- !u!1 &96109443
@@ -1155,7 +1158,7 @@ GameObject:
   - component: {fileID: 485980096}
   - component: {fileID: 485980095}
   m_Layer: 0
-  m_Name: Brick Blue
+  m_Name: Brick Unbreakable
   m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1240,7 +1243,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d8bca4dfb2b8dc749b8dc23f484156a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89b38a4013b1a9d40a016f3c29df8d1f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4475,7 +4478,7 @@ GameObject:
   - component: {fileID: 1158047098}
   - component: {fileID: 1158047097}
   m_Layer: 0
-  m_Name: Brick Blue
+  m_Name: Brick Unbreakable
   m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4560,7 +4563,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d8bca4dfb2b8dc749b8dc23f484156a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89b38a4013b1a9d40a016f3c29df8d1f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

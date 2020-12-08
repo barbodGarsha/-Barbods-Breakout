@@ -17,8 +17,7 @@ public class BallView : MonoBehaviour
         this.transform.position = ball_model.pos;
     }
 
-    
-    void OnCollisionEnter2D(Collision2D collision) 
+    void OnCollisionEnter2D(Collision2D collision)
     {
         GameConroller.instance.ball_hit(collision);
     }

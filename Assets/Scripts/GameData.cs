@@ -62,6 +62,11 @@ public class GameModel
 
 public class BricksModel 
 {
+    public enum Pickup 
+    {
+        NONE,
+        EXTRA_LIVE
+    }
     public enum BricksType
     {
         RED,
@@ -72,8 +77,10 @@ public class BricksModel
     public GameObject g;
     public Sprite sprite;
     public BricksType type = BricksType.BLUE;
+    public Pickup pickup = Pickup.NONE;
     public int lives = 1;
     public bool is_changed = true;
+    
 
 }
 

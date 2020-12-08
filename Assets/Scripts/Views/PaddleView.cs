@@ -16,4 +16,13 @@ public class PaddleView : MonoBehaviour
     {
         transform.position = paddle_model.pos;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Pickup")
+        {
+            GameConroller.instance.pickup(collision.gameObject.name);
+            Destroy(collision.gameObject);
+        }
+    }
 }
