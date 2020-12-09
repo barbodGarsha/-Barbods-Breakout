@@ -19,10 +19,27 @@ public class PaddleView : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("bs");
         if (collision.gameObject.tag == "Pickup")
         {
             GameConroller.instance.pickup(collision.gameObject.name);
             Destroy(collision.gameObject);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            paddle_model.hit_wall = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            paddle_model.hit_wall = false;
         }
     }
 }

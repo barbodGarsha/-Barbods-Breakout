@@ -36,8 +36,10 @@ public class PaddleModel
     //Just in case we added playing with keyboard
     public const float SPEED = 20f;
 
-    public const float LEFT_MAX = -10.06f;
-    public const float RIGHT_MAX = 10.06f;
+    public float left_max = -20f;
+    public float right_max = 20f;
+
+    public bool hit_wall = false;
 
     public Vector3 pos = new Vector3(0, 0, 0);
 

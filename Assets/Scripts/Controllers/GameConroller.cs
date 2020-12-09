@@ -84,7 +84,7 @@ public class GameConroller : MonoBehaviour
                 ui_model.ui_update |= Ui.UiUpdate.LIVES;
                 break;
             case "Short Paddle":
-                paddle.transform.localScale -= new Vector3(0.240f, 0f, 0f);
+                paddle.transform.localScale -= new Vector3(0.24f, 0f, 0f);
                 break;
             case "Long Paddle":
                 paddle.transform.localScale += new Vector3(0.240f, 0f, 0f);

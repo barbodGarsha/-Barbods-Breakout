@@ -1953,7 +1953,7 @@ GameObject:
   - component: {fileID: 540793251}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6378,6 +6378,7 @@ GameObject:
   - component: {fileID: 1546839944}
   - component: {fileID: 1546839947}
   - component: {fileID: 1546839946}
+  - component: {fileID: 1546839948}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Player
@@ -6487,6 +6488,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 1.28}
   m_EdgeRadius: 0
+--- !u!50 &1546839948
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546839943}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 100
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
 --- !u!1 &1550805198
 GameObject:
   m_ObjectHideFlags: 0
@@ -7657,7 +7679,7 @@ GameObject:
   - component: {fileID: 1814378351}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

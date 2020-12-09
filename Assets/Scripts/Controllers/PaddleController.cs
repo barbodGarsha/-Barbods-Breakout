@@ -26,8 +26,19 @@ public class PaddleController : MonoBehaviour
             mouse_pos.z = Mathf.Abs(paddle_model.pos.z - Camera.main.transform.position.z);
             mouse_pos = Camera.main.ScreenToWorldPoint(mouse_pos);
 
+            if (paddle_model.hit_wall)
+            {
+                if (paddle_model.pos.x > 0)
+                {
+                    paddle_model.right_max = paddle_model.pos.x;
+                }
+                else
+                {
+                    paddle_model.left_max = paddle_model.pos.x;
+                }
+            }
             //TODO: after designing a level the max and min value in Mathf.Clamp() function needs to change
-            paddle_model.pos = new Vector2(Mathf.Clamp(mouse_pos.x, PaddleModel.LEFT_MAX, PaddleModel.RIGHT_MAX), paddle_model.pos.y);
+            paddle_model.pos = new Vector2(Mathf.Clamp(mouse_pos.x, paddle_model.left_max, paddle_model.right_max), paddle_model.pos.y);
 
             //----------------------------------------
             // Moving the paddle with kyboard 
