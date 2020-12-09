@@ -9,7 +9,7 @@ public class UiView : MonoBehaviour
 {
     public GameObject screen;
     public GameObject gameover_score;
-    public GameObject gameover_main_text;
+    public GameObject main_text;
 
     public Text score_text;
     public Text lives_text;
@@ -38,22 +38,26 @@ public class UiView : MonoBehaviour
             }
             if ((ui_model.ui_update & Ui.UiUpdate.SCREEN) == Ui.UiUpdate.SCREEN)
             {
+
                 switch (game_model.game_status)
                 {
                     case GameModel.status.PLAYING:
                         screen.SetActive(false);
                         break;
                     case GameModel.status.PAUSE:
+                        screen.SetActive(true);
+                        gameover_score.gameObject.GetComponent<TextMeshProUGUI>().SetText("Score: " + game_model.score);
+                        main_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("Paused");
                         break;
                     case GameModel.status.WON:
                         screen.SetActive(true);
                         gameover_score.gameObject.GetComponent<TextMeshProUGUI>().SetText("Score: " + game_model.score);
-                        gameover_main_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("You Won");
+                        main_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("You Won");
                         break;
                     case GameModel.status.GAMEOVER:
                         screen.SetActive(true);
                         gameover_score.gameObject.GetComponent<TextMeshProUGUI>().SetText("Score: " + game_model.score);
-                        gameover_main_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("You Lost");
+                        main_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("You Lost");
                         break;
                     default:
                         break;

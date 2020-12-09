@@ -12,7 +12,7 @@ public class Ui
         LIVES = 1 << 0,
         SCORE = 1 << 1,
         SCREEN = 1 << 2,
-        ALL = LIVES | SCORE
+        ALL = LIVES | SCORE | SCREEN
     }
 
     public UiUpdate ui_update = UiUpdate.ALL;

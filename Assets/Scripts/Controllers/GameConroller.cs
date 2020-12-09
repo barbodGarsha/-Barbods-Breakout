@@ -116,12 +116,22 @@ public class GameConroller : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     game_model.game_status = GameModel.status.PAUSE;
+                    ui_model.ui_update |= Ui.UiUpdate.SCREEN;
                 }
                 break;
             case GameModel.status.PAUSE:
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     game_model.game_status = GameModel.status.PLAYING;
+                    ui_model.ui_update |= Ui.UiUpdate.SCREEN;
+                }
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    reset();
+                }
+                else if (Input.GetKeyDown(KeyCode.Backspace))
+                {
+                    MySceneManager.load_menu_scene();
                 }
                 break;
             case GameModel.status.WON:
