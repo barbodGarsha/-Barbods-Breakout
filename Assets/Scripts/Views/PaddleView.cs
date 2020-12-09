@@ -12,7 +12,7 @@ public class PaddleView : MonoBehaviour
         paddle_model = data.paddle_model;
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.position = paddle_model.pos;
     }
