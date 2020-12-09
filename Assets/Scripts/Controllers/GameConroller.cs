@@ -10,7 +10,7 @@ public class GameConroller : MonoBehaviour
 
     public GameObject bricks;
 
-    public GameObject Extra_live_prefab;
+    public GameObject Extra_live_prefab, short_paddle_prefab;
 
     private static GameConroller _instance;
     public static GameConroller instance { get { return _instance; } }
@@ -82,6 +82,12 @@ public class GameConroller : MonoBehaviour
             case "Extra Live":
                 game_model.lives++;
                 ui_model.ui_update |= Ui.UiUpdate.LIVES;
+                break;
+            case "Short Paddle":
+                paddle.transform.localScale -= new Vector3(0.240f, 0f, 0f);
+                break;
+            case "Long Paddle":
+                paddle.transform.localScale += new Vector3(0.240f, 0f, 0f);
                 break;
             default:
                 break;
@@ -227,11 +233,16 @@ public class GameConroller : MonoBehaviour
                 brick.is_changed = true;
                 if (brick.lives == 0)
                 {
+                    GameObject temp;
                     switch (brick.pickup)
                     {
                         case BricksModel.Pickup.EXTRA_LIVE:
-                            var temp = Instantiate(Extra_live_prefab, brick.g.transform.position, Quaternion.identity);
+                            temp = Instantiate(Extra_live_prefab, brick.g.transform.position, Quaternion.identity);
                             temp.name = "Extra Live";
+                            break;
+                        case BricksModel.Pickup.SHORT_PADDLE:
+                            temp = Instantiate(short_paddle_prefab, brick.g.transform.position, Quaternion.identity);
+                            temp.name = "Short Paddle";
                             break;
                         default:
                             break;

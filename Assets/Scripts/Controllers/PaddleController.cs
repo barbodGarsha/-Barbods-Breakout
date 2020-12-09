@@ -17,7 +17,7 @@ public class PaddleController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (game_model.game_status == GameModel.status.PLAYING)
         {

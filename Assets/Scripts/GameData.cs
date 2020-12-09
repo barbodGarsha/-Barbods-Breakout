@@ -65,7 +65,8 @@ public class BricksModel
     public enum Pickup 
     {
         NONE,
-        EXTRA_LIVE
+        EXTRA_LIVE,
+        SHORT_PADDLE
     }
     public enum BricksType
     {
