@@ -10,7 +10,7 @@ public class GameConroller : MonoBehaviour
 
     public GameObject bricks;
 
-    public GameObject Extra_live_prefab, short_paddle_prefab;
+    public GameObject Extra_live_prefab, short_paddle_prefab, long_paddle_prefab;
 
     private static GameConroller _instance;
     public static GameConroller instance { get { return _instance; } }
@@ -84,10 +84,32 @@ public class GameConroller : MonoBehaviour
                 ui_model.ui_update |= Ui.UiUpdate.LIVES;
                 break;
             case "Short Paddle":
-                paddle.transform.localScale -= new Vector3(0.24f, 0f, 0f);
+                if (paddle_model.size != PaddleModel.Size.SHORT)
+                {
+                    paddle.transform.localScale -= new Vector3(0.24f, 0f, 0f);
+                    if (paddle_model.size == PaddleModel.Size.NORMAL)
+                    {
+                        paddle_model.size = PaddleModel.Size.SHORT;
+                    }
+                    else
+                    {
+                        paddle_model.size = PaddleModel.Size.NORMAL;
+                    }
+                }
                 break;
             case "Long Paddle":
-                paddle.transform.localScale += new Vector3(0.240f, 0f, 0f);
+                if (paddle_model.size != PaddleModel.Size.LONG)
+                {
+                    paddle.transform.localScale += new Vector3(0.240f, 0f, 0f);
+                    if (paddle_model.size == PaddleModel.Size.NORMAL)
+                    {
+                        paddle_model.size = PaddleModel.Size.LONG;
+                    }
+                    else
+                    {
+                        paddle_model.size = PaddleModel.Size.NORMAL;
+                    }
+                }
                 break;
             default:
                 break;

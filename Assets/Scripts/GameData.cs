@@ -41,6 +41,13 @@ public class PaddleModel
 
     public bool hit_wall = false;
 
+    public enum Size 
+    {
+        SHORT,
+        NORMAL,
+        LONG
+    }
+    public Size size = Size.NORMAL;
     public Vector3 pos = new Vector3(0, 0, 0);
 
 }
