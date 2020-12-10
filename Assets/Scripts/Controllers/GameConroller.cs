@@ -72,6 +72,20 @@ public class GameConroller : MonoBehaviour
         } while (brick_model[extra_live_index].type == BricksModel.BricksType.UNBREAKABLE);
         brick_model[extra_live_index].pickup = BricksModel.Pickup.EXTRA_LIVE;
 
+        int short_paddle_index;
+        do
+        {
+            short_paddle_index = Random.Range(0, brick_model.Length);
+        } while (brick_model[short_paddle_index].type == BricksModel.BricksType.UNBREAKABLE || (short_paddle_index == extra_live_index));
+        brick_model[short_paddle_index].pickup = BricksModel.Pickup.SHORT_PADDLE;
+
+        int long_paddle_index;
+        do
+        {
+            long_paddle_index = Random.Range(0, brick_model.Length);
+        } while (brick_model[long_paddle_index].type == BricksModel.BricksType.UNBREAKABLE || (long_paddle_index == extra_live_index) || (short_paddle_index == long_paddle_index));
+        brick_model[long_paddle_index].pickup = BricksModel.Pickup.LONG_PADDLE;
+
 
     }
 
@@ -259,12 +273,16 @@ public class GameConroller : MonoBehaviour
                     switch (brick.pickup)
                     {
                         case BricksModel.Pickup.EXTRA_LIVE:
-                            temp = Instantiate(Extra_live_prefab, brick.g.transform.position, Quaternion.identity);
+                            temp = Instantiate(Extra_live_prefab, new Vector3(brick.g.transform.position.x, brick.g.transform.position.y, brick.g.transform.position.z - 1), Quaternion.identity);
                             temp.name = "Extra Live";
                             break;
                         case BricksModel.Pickup.SHORT_PADDLE:
-                            temp = Instantiate(short_paddle_prefab, brick.g.transform.position, Quaternion.identity);
+                            temp = Instantiate(short_paddle_prefab, new Vector3(brick.g.transform.position.x, brick.g.transform.position.y, brick.g.transform.position.z - 1), Quaternion.identity);
                             temp.name = "Short Paddle";
+                            break;
+                        case BricksModel.Pickup.LONG_PADDLE:
+                            temp = Instantiate(long_paddle_prefab, new Vector3(brick.g.transform.position.x, brick.g.transform.position.y, brick.g.transform.position.z - 1), Quaternion.identity);
+                            temp.name = "Long Paddle";
                             break;
                         default:
                             break;

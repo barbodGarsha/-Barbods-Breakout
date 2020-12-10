@@ -75,7 +75,8 @@ public class BricksModel
     {
         NONE,
         EXTRA_LIVE,
-        SHORT_PADDLE
+        SHORT_PADDLE,
+        LONG_PADDLE
     }
     public enum BricksType
     {
