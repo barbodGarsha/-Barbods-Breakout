@@ -10,6 +10,7 @@ public class UiView : MonoBehaviour
     public GameObject screen;
     public GameObject gameover_score;
     public GameObject main_text;
+    public GameObject high_score_text;
 
     public Text score_text;
     public Text lives_text;
@@ -35,6 +36,10 @@ public class UiView : MonoBehaviour
             if ((ui_model.ui_update & Ui.UiUpdate.SCORE) == Ui.UiUpdate.SCORE)
             {
                 score_text.text = "SCORE: " + game_model.score;
+            }
+            if ((ui_model.ui_update & Ui.UiUpdate.HIGHSCORE) == Ui.UiUpdate.HIGHSCORE)
+            {
+                high_score_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("HIGH SCORE: " + GameData.instance.high_score);
             }
             if ((ui_model.ui_update & Ui.UiUpdate.SCREEN) == Ui.UiUpdate.SCREEN)
             {

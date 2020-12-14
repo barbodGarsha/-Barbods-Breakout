@@ -144,6 +144,8 @@ public class GameConroller : MonoBehaviour
 
         ball_model.pos = ball.transform.position;
         paddle_model.pos = paddle.transform.position;
+
+        GameData.instance.high_score = PlayerPrefs.GetInt("High Score");
     }
 
     void Update()
@@ -206,6 +208,12 @@ public class GameConroller : MonoBehaviour
     {
         game_model.bricks--;
         game_model.score += 25;
+        if (GameData.instance.high_score < game_model.score)
+        {
+            GameData.instance.high_score = game_model.score;
+            PlayerPrefs.SetInt("High Score", GameData.instance.high_score);
+            ui_model.ui_update |= Ui.UiUpdate.HIGHSCORE;
+        }
         ui_model.ui_update |= Ui.UiUpdate.SCORE;
 
         if (game_model.bricks == 0)
