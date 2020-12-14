@@ -11537,8 +11537,8 @@ MonoBehaviour:
   screen: {fileID: 2094965114}
   gameover_score: {fileID: 520223334}
   main_text: {fileID: 1195431892}
+  high_score_text: {fileID: 1030171865}
   score_text: {fileID: 497813536}
-  high_score_text: {fileID: 0}
   lives_text: {fileID: 759892249}
 --- !u!1 &1790668201
 GameObject:
