@@ -24,6 +24,13 @@ public class BallModel
     public const float OFFSET = 0.377f;
     public float speed = 10f;
 
+    public enum SpeedMode
+    {
+        FAST,
+        NORMAL,
+        SLOW
+    }
+    public SpeedMode speed_mode = SpeedMode.NORMAL;
     public Vector3 pos;
     public Vector2 direction = new Vector2(0, 1);
 
@@ -55,6 +62,16 @@ public class PaddleModel
 
 public class GameModel
 {
+    public enum Pickup
+    {
+        NONE,
+        EXTRA_LIVE,
+        SHORT_PADDLE,
+        LONG_PADDLE,
+        FAST_BALL,
+        SLOW_BALL
+    }
+
     public enum status
     {
         PLAYING,
@@ -72,15 +89,7 @@ public class GameModel
 
 public class BricksModel 
 {
-    public enum Pickup 
-    {
-        NONE,
-        EXTRA_LIVE,
-        SHORT_PADDLE,
-        LONG_PADDLE,
-        FAST_BALL,
-        SLOW_BALL
-    }
+   
     public enum BricksType
     {
         RED,
@@ -91,7 +100,7 @@ public class BricksModel
     public GameObject g;
     public Sprite sprite;
     public BricksType type = BricksType.BLUE;
-    public Pickup pickup = Pickup.NONE;
+    public bool have_pickup = false;
     public int lives = 1;
     public bool is_changed = true;
     

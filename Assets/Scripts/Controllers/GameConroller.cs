@@ -65,31 +65,132 @@ public class GameConroller : MonoBehaviour
             brick_model[i].name = "Brick" + i;
         }
 
-        int extra_live_index;
-        do
+        int pickup_index;
+        for (int i = 0; i < 6; i++)
         {
-            extra_live_index = Random.Range(0, brick_model.Length);
-        } while (brick_model[extra_live_index].type == BricksModel.BricksType.UNBREAKABLE);
-        brick_model[extra_live_index].pickup = BricksModel.Pickup.EXTRA_LIVE;
-
-        int short_paddle_index;
-        do
-        {
-            short_paddle_index = Random.Range(0, brick_model.Length);
-        } while (brick_model[short_paddle_index].type == BricksModel.BricksType.UNBREAKABLE || (short_paddle_index == extra_live_index));
-        brick_model[short_paddle_index].pickup = BricksModel.Pickup.SHORT_PADDLE;
-
-        int long_paddle_index;
-        do
-        {
-            long_paddle_index = Random.Range(0, brick_model.Length);
-        } while (brick_model[long_paddle_index].type == BricksModel.BricksType.UNBREAKABLE || (long_paddle_index == extra_live_index) || (short_paddle_index == long_paddle_index));
-        brick_model[long_paddle_index].pickup = BricksModel.Pickup.LONG_PADDLE;
-
-
-
+            do
+            {
+                pickup_index = Random.Range(0, brick_model.Length);
+            } while (brick_model[pickup_index].type == BricksModel.BricksType.UNBREAKABLE);
+            brick_model[pickup_index].have_pickup = true;
+        }
     }
 
+    public GameModel.Pickup make_pickup() 
+    {
+        GameModel.Pickup p = GameModel.Pickup.EXTRA_LIVE;
+        int pickup_type;
+        pickup_type = Random.Range(0, 3);
+        switch (pickup_type)
+        {
+            case 0:
+                switch (ball_model.speed_mode)
+                {
+                    case BallModel.SpeedMode.FAST:
+                        p = GameModel.Pickup.SLOW_BALL;
+                        break;
+                    case BallModel.SpeedMode.NORMAL:
+                        if (Random.Range(0, 2) == 1)
+                        {
+                            p = GameModel.Pickup.SLOW_BALL;
+                        }
+                        else
+                        {
+                            p = GameModel.Pickup.FAST_BALL;
+                        }
+                        break;
+                    case BallModel.SpeedMode.SLOW:
+                        p = GameModel.Pickup.FAST_BALL;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 1:
+                switch (paddle_model.size)
+                {
+                    case PaddleModel.Size.SHORT:
+                        p = GameModel.Pickup.LONG_PADDLE;
+                        break;
+                    case PaddleModel.Size.NORMAL:
+                        if (Random.Range(0, 2) == 1)
+                        {
+                            p = GameModel.Pickup.LONG_PADDLE;
+                        }
+                        else
+                        {
+                            p = GameModel.Pickup.SHORT_PADDLE;
+                        }
+                        break;
+                    case PaddleModel.Size.LONG:
+                        p = GameModel.Pickup.SHORT_PADDLE;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 2:
+                if (game_model.lives <= 2)
+                {
+                    p = GameModel.Pickup.EXTRA_LIVE;
+                }
+                else
+                {
+                    if (Random.Range(0, 2) == 1)
+                    {
+                        switch (ball_model.speed_mode)
+                        {
+                            case BallModel.SpeedMode.FAST:
+                                p = GameModel.Pickup.SLOW_BALL;
+                                break;
+                            case BallModel.SpeedMode.NORMAL:
+                                if (Random.Range(0, 2) == 1)
+                                {
+                                    p = GameModel.Pickup.SLOW_BALL;
+                                }
+                                else
+                                {
+                                    p = GameModel.Pickup.FAST_BALL;
+                                }
+                                break;
+                            case BallModel.SpeedMode.SLOW:
+                                p = GameModel.Pickup.FAST_BALL;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (paddle_model.size)
+                        {
+                            case PaddleModel.Size.SHORT:
+                                p = GameModel.Pickup.LONG_PADDLE;
+                                break;
+                            case PaddleModel.Size.NORMAL:
+                                if (Random.Range(0, 2) == 1)
+                                {
+                                    p = GameModel.Pickup.LONG_PADDLE;
+                                }
+                                else
+                                {
+                                    p = GameModel.Pickup.SHORT_PADDLE;
+                                }
+                                break;
+                            case PaddleModel.Size.LONG:
+                                p = GameModel.Pickup.SHORT_PADDLE;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+        return p;
+    }
     public void pickup(string name) 
     {
         switch (name)
@@ -127,10 +228,32 @@ public class GameConroller : MonoBehaviour
                 }
                 break;
             case "Fast Ball":
-                ball_model.speed += 5;
+                if (ball_model.speed_mode != BallModel.SpeedMode.FAST)
+                {
+                    ball_model.speed += 2.5f;
+                    if (ball_model.speed_mode == BallModel.SpeedMode.NORMAL)
+                    {
+                        ball_model.speed_mode = BallModel.SpeedMode.FAST;
+                    }
+                    else
+                    {
+                        ball_model.speed_mode = BallModel.SpeedMode.SLOW;
+                    }
+                }
                 break;
             case "Slow Ball":
-                ball_model.speed -= 5;
+                if (ball_model.speed_mode != BallModel.SpeedMode.SLOW)
+                {
+                    ball_model.speed -= 2.5f;
+                    if (ball_model.speed_mode == BallModel.SpeedMode.NORMAL)
+                    {
+                        ball_model.speed_mode = BallModel.SpeedMode.SLOW;
+                    }
+                    else
+                    {
+                        ball_model.speed_mode = BallModel.SpeedMode.NORMAL;
+                    }
+                }
                 break;
             default:
                 break;
@@ -284,24 +407,37 @@ public class GameConroller : MonoBehaviour
                 brick.is_changed = true;
                 if (brick.lives == 0)
                 {
-                    GameObject temp;
-                    switch (brick.pickup)
+                    if (brick.have_pickup)
                     {
-                        case BricksModel.Pickup.EXTRA_LIVE:
-                            temp = Instantiate(Extra_live_prefab, new Vector3(brick.g.transform.position.x, brick.g.transform.position.y, brick.g.transform.position.z - 1), Quaternion.identity);
-                            temp.name = "Extra Live";
-                            break;
-                        case BricksModel.Pickup.SHORT_PADDLE:
-                            temp = Instantiate(short_paddle_prefab, new Vector3(brick.g.transform.position.x, brick.g.transform.position.y, brick.g.transform.position.z - 1), Quaternion.identity);
-                            temp.name = "Short Paddle";
-                            break;
-                        case BricksModel.Pickup.LONG_PADDLE:
-                            temp = Instantiate(long_paddle_prefab, new Vector3(brick.g.transform.position.x, brick.g.transform.position.y, brick.g.transform.position.z - 1), Quaternion.identity);
-                            temp.name = "Long Paddle";
-                            break;
-                        default:
-                            break;
-                    }
+                        //drop pickup
+                        GameModel.Pickup pickup = make_pickup();
+                        GameObject temp;
+                        switch (pickup)
+                        {
+                            case GameModel.Pickup.EXTRA_LIVE:
+                                temp = Instantiate(Extra_live_prefab, new Vector3(brick.g.transform.position.x, brick.g.transform.position.y, brick.g.transform.position.z - 1), Quaternion.identity);
+                                temp.name = "Extra Live";
+                                break;
+                            case GameModel.Pickup.SHORT_PADDLE:
+                                temp = Instantiate(short_paddle_prefab, new Vector3(brick.g.transform.position.x, brick.g.transform.position.y, brick.g.transform.position.z - 1), Quaternion.identity);
+                                temp.name = "Short Paddle";
+                                break;
+                            case GameModel.Pickup.LONG_PADDLE:
+                                temp = Instantiate(long_paddle_prefab, new Vector3(brick.g.transform.position.x, brick.g.transform.position.y, brick.g.transform.position.z - 1), Quaternion.identity);
+                                temp.name = "Long Paddle";
+                                break;
+                            case GameModel.Pickup.SLOW_BALL:
+                                temp = Instantiate(slow_ball_prefab, new Vector3(brick.g.transform.position.x, brick.g.transform.position.y, brick.g.transform.position.z - 1), Quaternion.identity);
+                                temp.name = "Slow Ball";
+                                break;
+                            case GameModel.Pickup.FAST_BALL:
+                                temp = Instantiate(fast_ball_prefab, new Vector3(brick.g.transform.position.x, brick.g.transform.position.y, brick.g.transform.position.z - 1), Quaternion.identity);
+                                temp.name = "Fast Ball";
+                                break;
+                            default:
+                                break;
+                        }
+                    }          
                     brick_destroyed();
                 }
                 break;
