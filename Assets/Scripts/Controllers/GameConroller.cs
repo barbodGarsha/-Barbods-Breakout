@@ -10,7 +10,7 @@ public class GameConroller : MonoBehaviour
 
     public GameObject bricks;
 
-    public GameObject Extra_live_prefab, short_paddle_prefab, long_paddle_prefab;
+    public GameObject Extra_live_prefab, short_paddle_prefab, long_paddle_prefab, fast_ball_prefab, slow_ball_prefab;
 
     private static GameConroller _instance;
     public static GameConroller instance { get { return _instance; } }
@@ -87,6 +87,7 @@ public class GameConroller : MonoBehaviour
         brick_model[long_paddle_index].pickup = BricksModel.Pickup.LONG_PADDLE;
 
 
+
     }
 
     public void pickup(string name) 
@@ -124,6 +125,12 @@ public class GameConroller : MonoBehaviour
                         paddle_model.size = PaddleModel.Size.NORMAL;
                     }
                 }
+                break;
+            case "Fast Ball":
+                ball_model.speed += 5;
+                break;
+            case "Slow Ball":
+                ball_model.speed -= 5;
                 break;
             default:
                 break;

@@ -38,7 +38,7 @@ public class BallController : MonoBehaviour
         {
             if (ball_model.is_simulation_on)
             {
-                ball_model.pos += to_vector3(ball_model.direction) * BallModel.SPEED * Time.deltaTime;
+                ball_model.pos += to_vector3(ball_model.direction) * ball_model.speed * Time.fixedDeltaTime;
             }
             else
             {

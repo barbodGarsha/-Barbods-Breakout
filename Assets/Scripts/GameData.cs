@@ -22,7 +22,7 @@ public class BallModel
 {
 
     public const float OFFSET = 0.377f;
-    public const float SPEED = 10f;
+    public float speed = 10f;
 
     public Vector3 pos;
     public Vector2 direction = new Vector2(0, 1);
@@ -77,7 +77,9 @@ public class BricksModel
         NONE,
         EXTRA_LIVE,
         SHORT_PADDLE,
-        LONG_PADDLE
+        LONG_PADDLE,
+        FAST_BALL,
+        SLOW_BALL
     }
     public enum BricksType
     {

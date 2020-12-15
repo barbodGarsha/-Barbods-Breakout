@@ -19,7 +19,6 @@ public class PaddleView : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("bs");
         if (collision.gameObject.tag == "Pickup")
         {
             GameConroller.instance.pickup(collision.gameObject.name);
