@@ -37,10 +37,18 @@ public class GameConroller : MonoBehaviour
     //BRICKS
     BricksModel[,] brick_model;
 
+    int[,] level = new int[12, 14];
+
     //BRICKS
     void bricks_init()
     {
-        int[,] level = new int[12, 14];
+        for (int i = 0; i < 12; i++)
+        {
+            for (int j = 0; j < 14; j++)
+            {
+                level[i, j] = 1;
+            }
+        }
         for (int i = 0; i < 12; i++)
         {
             for (int j = 0; j < 14; j++)
@@ -69,9 +77,12 @@ public class GameConroller : MonoBehaviour
                     default:
                         break;
                 }
-                bricks.transform.GetChild(i).GetChild(j).name = "Brick" + ((10 * i) + j);
-                        brick_model[i, j].name = "Brick" + ((10 * i) + j);
             }
+        }
+        for (int i = 0; i < 168; i++)
+        {
+            bricks.transform.GetChild(i).GetChild(j).name = "Brick" + i;
+            brick_model[i, j].name = "Brick" + i;
         }
 
         int pickup_index_x, pickup_index_y;
