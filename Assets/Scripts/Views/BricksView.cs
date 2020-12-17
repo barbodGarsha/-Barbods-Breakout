@@ -5,7 +5,7 @@ using System;
 public class BricksView : MonoBehaviour
 {
 
-    BricksModel[] brick_model;
+    BricksModel[,] brick_model;
     GameModel game_model;
     SpriteRenderer[] sprite_renderer;
     
@@ -25,19 +25,21 @@ public class BricksView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        for (int i = 0; i < brick_model.Length; i++)
-        {        
-            if (brick_model[i].is_changed)
+        for (int i = 0; i < 12; i++)
+        {
+            for (int j = 0; j < 14; j++)
             {
-
-                brick_model[i].is_changed = false;
-                if (brick_model[i].lives == 0)
+                if (brick_model[i, j].is_changed)
                 {
-                    gameObject.transform.GetChild(i).gameObject.SetActive(false);
-                    continue;
+
+                    brick_model[i, j].is_changed = false;
+                    if (brick_model[i, j].lives == 0)
+                    {
+                        gameObject.transform.GetChild(i).GetChild(j).gameObject.SetActive(false);
+                        continue;
+                    }
+                    sprite_renderer[i].sprite = brick_model[i, j].sprite;
                 }
-                sprite_renderer[i].sprite = brick_model[i].sprite;
             }
         }
     }

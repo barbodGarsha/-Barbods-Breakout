@@ -135,5 +135,5 @@ public class GameData : MonoBehaviour
 
     public Ui ui_model = new Ui();
 
-    public BricksModel[] brick_model = new BricksModel[2];
+    public BricksModel[,] brick_model = new BricksModel[12, 14];
 }

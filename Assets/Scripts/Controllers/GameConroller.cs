@@ -33,13 +33,35 @@ public class GameConroller : MonoBehaviour
     BallModel ball_model;
     PaddleModel paddle_model;
     Ui ui_model;
-    
-    //BRICKS
-    BricksModel[] brick_model;
 
     //BRICKS
-    //void bricks_init()
-    //{
+    BricksModel[,] brick_model;
+
+    //BRICKS
+    void bricks_init()
+    {
+        int[,] level = new int[12, 14];
+        for (int i = 0; i < 12; i++)
+        {
+            for (int j = 0; j < 14; j++)
+            {
+                brick_model[i,j] = new BricksModel();
+                brick_model[i, j].g = bricks.transform.GetChild(i).GetChild(j).gameObject;
+                switch (level[i,j])
+                {
+                    case 0://Unactive Brick
+                        break;
+                    case 1://Blue Brick
+                        break;
+                    case 2://Red Brick
+                        break;
+                    case 3://Unbreakable Brick
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     //    for (int i = 0; i < brick_model.Length; i++)
     //    {
     //        brick_model[i] = new BricksModel();
@@ -77,7 +99,7 @@ public class GameConroller : MonoBehaviour
     //        } while (brick_model[pickup_index].type == BricksModel.BricksType.UNBREAKABLE);
     //        brick_model[pickup_index].have_pickup = true;
     //    }
-    //}
+    }
 
     public GameModel.Pickup make_pickup() 
     {
@@ -271,10 +293,10 @@ public class GameConroller : MonoBehaviour
         ui_model = data.ui_model;
 
         //BRICKS
-        //game_model.bricks = bricks.transform.childCount;
-        //data.brick_model = new BricksModel[game_model.bricks];
-        //brick_model = data.brick_model;
-        //bricks_init();
+        //game_model.bricks = bricks.transform.childCount; //TODO
+        data.brick_model = new BricksModel[12, 14];
+        brick_model = data.brick_model;
+        bricks_init();
 
         ball_model.pos = ball.transform.position;
         paddle_model.pos = paddle.transform.position;
