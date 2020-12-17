@@ -50,6 +50,8 @@ public class BallController : MonoBehaviour
     public void reset_ball()
     {
         ball_model.is_simulation_on = false;
+        ball_model.speed = 10f;
+        ball_model.speed_mode = BallModel.SpeedMode.NORMAL;
         ball_model.pos = new Vector3(paddle_model.pos.x, paddle_model.pos.y + BallModel.OFFSET, 0);
         ball_model.direction = new Vector2(0, 1);
     }

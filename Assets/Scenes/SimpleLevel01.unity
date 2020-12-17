@@ -1234,7 +1234,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1453886992}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &82483612
 MonoBehaviour:
@@ -5600,7 +5600,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1453886992}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &523392942
 MonoBehaviour:
@@ -5614,6 +5614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55de9f3087c7c7e40ae97b4e24595326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paddle: {fileID: 1546839943}
 --- !u!1 &524950189
 GameObject:
   m_ObjectHideFlags: 0
@@ -6992,7 +6993,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Restart: Sapce'
+  m_text: 'Restart: Space'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12561,7 +12562,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1453886992}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1089083872
 MonoBehaviour:
@@ -17320,9 +17321,9 @@ Transform:
   m_LocalPosition: {x: -32.5, y: 19.7, z: -93.89384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 82483611}
   - {fileID: 1089083871}
   - {fileID: 523392941}
+  - {fileID: 82483611}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

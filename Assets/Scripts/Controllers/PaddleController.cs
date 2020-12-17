@@ -7,6 +7,21 @@ public class PaddleController : MonoBehaviour
     GameModel game_model;
     BallModel ball_model;
     PaddleModel paddle_model;
+    public GameObject paddle;
+
+    private static PaddleController _instance;
+    public static PaddleController instance { get { return _instance; } }
+    void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
 
     void Start()
     {
@@ -53,8 +68,10 @@ public class PaddleController : MonoBehaviour
 
     }
 
-    public void paddle_pos_reset() 
+    public void paddle_pos_reset()
     {
+        paddle.transform.localScale -= new Vector3(0.24f, 0f, 0f);
+        paddle_model.size = PaddleModel.Size.NORMAL;
         paddle_model.pos = new Vector3(0, -5.95f, 0);
     } 
 }

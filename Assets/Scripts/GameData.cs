@@ -81,9 +81,11 @@ public class GameModel
     }
 
     public status game_status = status.PLAYING;
-    public int bricks = 23;
+    public int bricks;
     public int lives = 3;
     public int score = 0;
+
+    public int creative_mode = 0;
 
 }
 
@@ -94,7 +96,8 @@ public class BricksModel
     {
         RED,
         BLUE,
-        UNBREAKABLE
+        UNBREAKABLE,
+        UNACTIVE
     }
     public string name;
     public GameObject g;

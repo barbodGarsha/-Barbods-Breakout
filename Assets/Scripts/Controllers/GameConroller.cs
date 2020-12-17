@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,28 +38,62 @@ public class GameConroller : MonoBehaviour
     //BRICKS
     BricksModel[,] brick_model;
 
-    int[,] level = new int[12, 14];
+    int[,] map = new int[12, 14];
 
-    //BRICKS
-    void bricks_init()
+
+    string readTextFile(string file_path)
     {
-        int brick_counter = 0;
-        for (int i = 0; i < 12; i++)
+        StreamReader inp_stm = new StreamReader(file_path);
+        string inp_ln = "";
+        while (!inp_stm.EndOfStream)
         {
-            for (int j = 0; j < 14; j++)
+            inp_ln += inp_stm.ReadLine(); 
+        }
+
+        inp_stm.Close();
+        return inp_ln;
+    }
+    int[,] make_lvl(string map)
+    {
+        int count = 0;
+        int i = 0, j = 0;
+        int[,] lvl = new int[12, 14];
+        while (i < 12 && j < 14)
+        {
+            while (true)
             {
-                level[i, j] = 1;
+                if (map[count] >= '0' && map[count] <= '9') { break; }
+                count++;
+            }
+            lvl[i, j] = int.Parse(map[count].ToString());
+            j++;
+            count++;
+            if (map[count] == 'X')
+            {
+                j = 0;
+                i++;
             }
         }
+        return lvl;
+    }
+    //BRICKS
+    void bricks_init(int[,] level)
+    {
+        int brick_counter = 0;
+        game_model.bricks = 168;
+
         for (int i = 0; i < 12; i++)
         {
             for (int j = 0; j < 14; j++)
             {
-                brick_model[i,j] = new BricksModel();
+                brick_model[i, j] = new BricksModel();
                 brick_model[i, j].g = bricks.transform.GetChild(i).GetChild(j).gameObject;
-                switch (level[i,j])
+                switch (level[i, j])
                 {
                     case 0://Unactive Brick
+                        brick_model[i, j].type = BricksModel.BricksType.UNACTIVE;
+                        bricks.transform.GetChild(i).GetChild(j).gameObject.SetActive(false);
+                        game_model.bricks--;
                         break;
                     case 1://Blue Brick
                         brick_model[i, j].type = BricksModel.BricksType.BLUE;
@@ -83,7 +118,7 @@ public class GameConroller : MonoBehaviour
                 brick_counter++;
             }
         }
-        
+
         int pickup_index_x, pickup_index_y;
         for (int i = 0; i < 6; i++)
         {
@@ -91,7 +126,7 @@ public class GameConroller : MonoBehaviour
             {
                 pickup_index_x = Random.Range(0, 12);
                 pickup_index_y = Random.Range(0, 14);
-            } while (brick_model[pickup_index_x, pickup_index_y].type == BricksModel.BricksType.UNBREAKABLE);
+            } while ((brick_model[pickup_index_x, pickup_index_y].type == BricksModel.BricksType.UNBREAKABLE) || (brick_model[pickup_index_x, pickup_index_y].type == BricksModel.BricksType.UNACTIVE));
             brick_model[pickup_index_x, pickup_index_y].have_pickup = true;
         }
 
@@ -287,12 +322,20 @@ public class GameConroller : MonoBehaviour
         ball_model = data.ball_model;
         paddle_model = data.paddle_model;
         ui_model = data.ui_model;
-
+        game_model.creative_mode = PlayerPrefs.GetInt("Creative Mode");
         //BRICKS
-        //game_model.bricks = bricks.transform.childCount; //TODO
         data.brick_model = new BricksModel[12, 14];
         brick_model = data.brick_model;
-        bricks_init();
+        if (game_model.creative_mode == 1)
+        {
+            string lvl_map = readTextFile(Directory.GetCurrentDirectory() + @"\LevelMaker\CreativeModeLvl.txt");
+            bricks_init(make_lvl(lvl_map));
+        }
+        else
+        {
+            string lvl_map = readTextFile(Directory.GetCurrentDirectory() + @"\LevelMaker\lvl.txt");
+            bricks_init(make_lvl(lvl_map));
+        }
 
         ball_model.pos = ball.transform.position;
         paddle_model.pos = paddle.transform.position;
@@ -302,6 +345,7 @@ public class GameConroller : MonoBehaviour
 
     void Update()
     {
+       
         switch (game_model.game_status)
         {
             case GameModel.status.PLAYING:
@@ -313,6 +357,19 @@ public class GameConroller : MonoBehaviour
                 {
                     game_model.game_status = GameModel.status.PAUSE;
                     ui_model.ui_update |= Ui.UiUpdate.SCREEN;
+                }
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    if (game_model.creative_mode == 0)
+                    {
+                        PlayerPrefs.SetInt("Creative Mode", 1);
+                        reset();
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("Creative Mode", 0);
+                        reset();
+                    }
                 }
                 break;
             case GameModel.status.PAUSE:
@@ -486,4 +543,8 @@ public class GameConroller : MonoBehaviour
 
     }
 
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("Creative Mode", 0);
+    }
 }
