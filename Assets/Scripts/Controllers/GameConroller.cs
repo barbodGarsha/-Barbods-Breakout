@@ -29,7 +29,7 @@ public class GameConroller : MonoBehaviour
 
     public GameObject paddle;
     public GameObject ball;
-
+    int lvl_index;
     GameModel game_model;
     BallModel ball_model;
     PaddleModel paddle_model;
@@ -318,6 +318,8 @@ public class GameConroller : MonoBehaviour
     }
     void Start()
     {
+        lvl_index = PlayerPrefs.GetInt("Level Index");
+        PlayerPrefs.SetInt("Level Index", 1);
         var data = GameData.instance;
         game_model = data.game_model;
         ball_model = data.ball_model;
@@ -334,14 +336,16 @@ public class GameConroller : MonoBehaviour
         }
         else
         {
-            string lvl_map = readTextFile(Directory.GetCurrentDirectory() + @"\LevelMaker\lvl.txt");
+            
+            string lvl_map = readTextFile(Directory.GetCurrentDirectory() + @"\LevelMaker\lvl" + lvl_index + ".txt");
+            
             bricks_init(make_lvl(lvl_map));
         }
 
         ball_model.pos = ball.transform.position;
         paddle_model.pos = paddle.transform.position;
-        
-        GameData.instance.high_score = PlayerPrefs.GetInt("High Score");
+
+        GameData.instance.high_score = PlayerPrefs.GetInt("High Score" + lvl_index);
     }
 
     void Update()
@@ -397,6 +401,11 @@ public class GameConroller : MonoBehaviour
                 {
                     MySceneManager.load_menu_scene();
                 }
+                else if (Input.GetKeyDown(KeyCode.KeypadEnter))
+                {
+                    lvl_index++;
+                    PlayerPrefs.SetInt("Level Index", lvl_index);
+                }
                 break;
             case GameModel.status.GAMEOVER:
                 if (Input.GetKeyDown(KeyCode.Space))
@@ -421,7 +430,7 @@ public class GameConroller : MonoBehaviour
         if (GameData.instance.high_score < game_model.score)
         {
             GameData.instance.high_score = game_model.score;
-            PlayerPrefs.SetInt("High Score", GameData.instance.high_score);
+            PlayerPrefs.SetInt("High Score" + lvl_index, GameData.instance.high_score);
             ui_model.ui_update |= Ui.UiUpdate.HIGHSCORE;
         }
         ui_model.ui_update |= Ui.UiUpdate.SCORE;
