@@ -52,53 +52,39 @@ public class GameConroller : MonoBehaviour
                     case 0://Unactive Brick
                         break;
                     case 1://Blue Brick
+                        brick_model[i, j].type = BricksModel.BricksType.BLUE;
+                        brick_model[i, j].sprite = sprite_blue;
+                        brick_model[i, j].lives = 1; //For Now
                         break;
                     case 2://Red Brick
+                        brick_model[i, j].type = BricksModel.BricksType.RED;
+                        brick_model[i, j].sprite = sprite_red;
+                        brick_model[i, j].lives = 2; //For Now
                         break;
                     case 3://Unbreakable Brick
+                        brick_model[i, j].type = BricksModel.BricksType.UNBREAKABLE;
+                        brick_model[i, j].sprite = sprite_unbreakable;
+                        game_model.bricks--;
                         break;
                     default:
                         break;
                 }
+                bricks.transform.GetChild(i).GetChild(j).name = "Brick" + ((10 * i) + j);
+                        brick_model[i, j].name = "Brick" + ((10 * i) + j);
             }
         }
-    //    for (int i = 0; i < brick_model.Length; i++)
-    //    {
-    //        brick_model[i] = new BricksModel();
-    //        brick_model[i].g = bricks.transform.GetChild(i).gameObject;
-    //        switch (bricks.transform.GetChild(i).name)
-    //        {
-    //            case "Brick Blue":
-    //                brick_model[i].type = BricksModel.BricksType.BLUE;
-    //                brick_model[i].sprite = sprite_blue;
-    //                brick_model[i].lives = 1; //For Now
-    //                break;
-    //            case "Brick Red":
-    //                brick_model[i].type = BricksModel.BricksType.RED;
-    //                brick_model[i].sprite = sprite_red;
-    //                brick_model[i].lives = 2; //For Now
-    //                break;
-    //            case "Brick Unbreakable":
-    //                brick_model[i].type = BricksModel.BricksType.UNBREAKABLE;
-    //                brick_model[i].sprite = sprite_unbreakable;
-    //                game_model.bricks--;
-    //                break;
-    //            default:
-    //                break;
-    //        }
-    //        bricks.transform.GetChild(i).name = "Brick" + i;
-    //        brick_model[i].name = "Brick" + i;
-    //    }
 
-    //    int pickup_index;
-    //    for (int i = 0; i < 6; i++)
-    //    {
-    //        do
-    //        {
-    //            pickup_index = Random.Range(0, brick_model.Length);
-    //        } while (brick_model[pickup_index].type == BricksModel.BricksType.UNBREAKABLE);
-    //        brick_model[pickup_index].have_pickup = true;
-    //    }
+        int pickup_index_x, pickup_index_y;
+        for (int i = 0; i < 6; i++)
+        {
+            do
+            {
+                pickup_index_x = Random.Range(0, 12);
+                pickup_index_y = Random.Range(0, 14);
+            } while (brick_model[pickup_index_x, pickup_index_y].type == BricksModel.BricksType.UNBREAKABLE);
+            brick_model[pickup_index_x, pickup_index_y].have_pickup = true;
+        }
+
     }
 
     public GameModel.Pickup make_pickup() 

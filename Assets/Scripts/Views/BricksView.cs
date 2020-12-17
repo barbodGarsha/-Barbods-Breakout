@@ -7,7 +7,7 @@ public class BricksView : MonoBehaviour
 
     BricksModel[,] brick_model;
     GameModel game_model;
-    SpriteRenderer[] sprite_renderer;
+    SpriteRenderer[,] sprite_renderer;
     
     void Start()
     {
@@ -15,10 +15,13 @@ public class BricksView : MonoBehaviour
         game_model = data.game_model;
         brick_model = data.brick_model;
 
-        sprite_renderer = new SpriteRenderer[brick_model.Length];
-        for (int i = 0; i < brick_model.Length; i++)
+        sprite_renderer = new SpriteRenderer[12, 14];
+        for (int i = 0; i < 12; i++)
         {
-            sprite_renderer[i] = gameObject.transform.GetChild(i).GetComponent<SpriteRenderer>();
+            for (int j = 0; j < 14; j++)
+            {
+                sprite_renderer[i, j] = gameObject.transform.GetChild(i).transform.GetChild(j).GetComponent<SpriteRenderer>();
+            }
         }
     }
 
@@ -38,7 +41,7 @@ public class BricksView : MonoBehaviour
                         gameObject.transform.GetChild(i).GetChild(j).gameObject.SetActive(false);
                         continue;
                     }
-                    sprite_renderer[i].sprite = brick_model[i, j].sprite;
+                    sprite_renderer[i, j].sprite = brick_model[i, j].sprite;
                 }
             }
         }
