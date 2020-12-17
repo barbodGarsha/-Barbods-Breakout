@@ -79,6 +79,7 @@ public class GameConroller : MonoBehaviour
     //BRICKS
     void bricks_init(int[,] level)
     {
+        
         int brick_counter = 0;
         game_model.bricks = 168;
 
@@ -339,7 +340,7 @@ public class GameConroller : MonoBehaviour
 
         ball_model.pos = ball.transform.position;
         paddle_model.pos = paddle.transform.position;
-
+        
         GameData.instance.high_score = PlayerPrefs.GetInt("High Score");
     }
 
