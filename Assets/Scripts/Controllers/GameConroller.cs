@@ -33,48 +33,51 @@ public class GameConroller : MonoBehaviour
     BallModel ball_model;
     PaddleModel paddle_model;
     Ui ui_model;
+    
+    //BRICKS
     BricksModel[] brick_model;
 
-    void bricks_init()
-    {
-        for (int i = 0; i < brick_model.Length; i++)
-        {
-            brick_model[i] = new BricksModel();
-            brick_model[i].g = bricks.transform.GetChild(i).gameObject;
-            switch (bricks.transform.GetChild(i).name)
-            {
-                case "Brick Blue":
-                    brick_model[i].type = BricksModel.BricksType.BLUE;
-                    brick_model[i].sprite = sprite_blue;
-                    brick_model[i].lives = 1; //For Now
-                    break;
-                case "Brick Red":
-                    brick_model[i].type = BricksModel.BricksType.RED;
-                    brick_model[i].sprite = sprite_red;
-                    brick_model[i].lives = 2; //For Now
-                    break;
-                case "Brick Unbreakable":
-                    brick_model[i].type = BricksModel.BricksType.UNBREAKABLE;
-                    brick_model[i].sprite = sprite_unbreakable;
-                    game_model.bricks--;
-                    break;
-                default:
-                    break;
-            }
-            bricks.transform.GetChild(i).name = "Brick" + i;
-            brick_model[i].name = "Brick" + i;
-        }
+    //BRICKS
+    //void bricks_init()
+    //{
+    //    for (int i = 0; i < brick_model.Length; i++)
+    //    {
+    //        brick_model[i] = new BricksModel();
+    //        brick_model[i].g = bricks.transform.GetChild(i).gameObject;
+    //        switch (bricks.transform.GetChild(i).name)
+    //        {
+    //            case "Brick Blue":
+    //                brick_model[i].type = BricksModel.BricksType.BLUE;
+    //                brick_model[i].sprite = sprite_blue;
+    //                brick_model[i].lives = 1; //For Now
+    //                break;
+    //            case "Brick Red":
+    //                brick_model[i].type = BricksModel.BricksType.RED;
+    //                brick_model[i].sprite = sprite_red;
+    //                brick_model[i].lives = 2; //For Now
+    //                break;
+    //            case "Brick Unbreakable":
+    //                brick_model[i].type = BricksModel.BricksType.UNBREAKABLE;
+    //                brick_model[i].sprite = sprite_unbreakable;
+    //                game_model.bricks--;
+    //                break;
+    //            default:
+    //                break;
+    //        }
+    //        bricks.transform.GetChild(i).name = "Brick" + i;
+    //        brick_model[i].name = "Brick" + i;
+    //    }
 
-        int pickup_index;
-        for (int i = 0; i < 6; i++)
-        {
-            do
-            {
-                pickup_index = Random.Range(0, brick_model.Length);
-            } while (brick_model[pickup_index].type == BricksModel.BricksType.UNBREAKABLE);
-            brick_model[pickup_index].have_pickup = true;
-        }
-    }
+    //    int pickup_index;
+    //    for (int i = 0; i < 6; i++)
+    //    {
+    //        do
+    //        {
+    //            pickup_index = Random.Range(0, brick_model.Length);
+    //        } while (brick_model[pickup_index].type == BricksModel.BricksType.UNBREAKABLE);
+    //        brick_model[pickup_index].have_pickup = true;
+    //    }
+    //}
 
     public GameModel.Pickup make_pickup() 
     {
@@ -267,10 +270,11 @@ public class GameConroller : MonoBehaviour
         paddle_model = data.paddle_model;
         ui_model = data.ui_model;
 
-        game_model.bricks = bricks.transform.childCount;
-        data.brick_model = new BricksModel[game_model.bricks];
-        brick_model = data.brick_model;
-        bricks_init();
+        //BRICKS
+        //game_model.bricks = bricks.transform.childCount;
+        //data.brick_model = new BricksModel[game_model.bricks];
+        //brick_model = data.brick_model;
+        //bricks_init();
 
         ball_model.pos = ball.transform.position;
         paddle_model.pos = paddle.transform.position;
