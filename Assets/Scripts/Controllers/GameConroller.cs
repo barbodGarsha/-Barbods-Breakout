@@ -79,8 +79,8 @@ public class GameConroller : MonoBehaviour
                         break;
                 }
                 bricks.transform.GetChild(i).GetChild(j).name = "Brick" + brick_counter;
-                brick_counter++;
                 brick_model[i, j].name = "Brick" + brick_counter;
+                brick_counter++;
             }
         }
         
