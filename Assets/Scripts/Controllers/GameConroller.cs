@@ -29,7 +29,6 @@ public class GameConroller : MonoBehaviour
 
     public GameObject paddle;
     public GameObject ball;
-    int lvl_index;
     GameModel game_model;
     BallModel ball_model;
     PaddleModel paddle_model;
@@ -318,14 +317,17 @@ public class GameConroller : MonoBehaviour
     }
     void Start()
     {
-        lvl_index = PlayerPrefs.GetInt("Level Index");
-        PlayerPrefs.SetInt("Level Index", 1);
+        if (PlayerPrefs.HasKey("Level Index"))
+        {
+            PlayerPrefs.SetInt("Level Index", 1);
+        }
+        GameData.instance.lvl_index= PlayerPrefs.GetInt("Level Index");
         var data = GameData.instance;
         game_model = data.game_model;
         ball_model = data.ball_model;
         paddle_model = data.paddle_model;
         ui_model = data.ui_model;
-        game_model.creative_mode = PlayerPrefs.GetInt("Creative Mode");
+       // game_model.creative_mode = PlayerPrefs.GetInt("Creative Mode");
         //BRICKS
         data.brick_model = new BricksModel[12, 14];
         brick_model = data.brick_model;
@@ -337,15 +339,18 @@ public class GameConroller : MonoBehaviour
         else
         {
             
-            string lvl_map = readTextFile(Directory.GetCurrentDirectory() + @"\LevelMaker\lvl" + lvl_index + ".txt");
+            string lvl_map = readTextFile(Directory.GetCurrentDirectory() + @"\LevelMaker\lvl" + GameData.instance.lvl_index + ".txt");
             
             bricks_init(make_lvl(lvl_map));
         }
 
         ball_model.pos = ball.transform.position;
         paddle_model.pos = paddle.transform.position;
-
-        GameData.instance.high_score = PlayerPrefs.GetInt("High Score" + lvl_index);
+        if (PlayerPrefs.HasKey("High Score" + GameData.instance.lvl_index))
+        {
+            PlayerPrefs.SetInt("High Score" + GameData.instance.lvl_index, 0);
+        }
+        GameData.instance.high_score = PlayerPrefs.GetInt("High Score" + GameData.instance.lvl_index);
     }
 
     void Update()
@@ -378,6 +383,27 @@ public class GameConroller : MonoBehaviour
                 }
                 break;
             case GameModel.status.PAUSE:
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    if (GameData.instance.lvl_index > 1)
+                    {
+                        GameData.instance.lvl_index--;
+                        ui_model.ui_update |= Ui.UiUpdate.LEVEL;
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    if (GameData.instance.lvl_index < 13)
+                    {
+                        GameData.instance.lvl_index++;
+                        ui_model.ui_update |= Ui.UiUpdate.LEVEL;
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    PlayerPrefs.SetInt("Level Index", GameData.instance.lvl_index);
+                    reset();
+                }
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     game_model.game_status = GameModel.status.PLAYING;
@@ -403,8 +429,8 @@ public class GameConroller : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.KeypadEnter))
                 {
-                    lvl_index++;
-                    PlayerPrefs.SetInt("Level Index", lvl_index);
+                    GameData.instance.lvl_index++;
+                    PlayerPrefs.SetInt("Level Index", GameData.instance.lvl_index);
                 }
                 break;
             case GameModel.status.GAMEOVER:
@@ -430,7 +456,7 @@ public class GameConroller : MonoBehaviour
         if (GameData.instance.high_score < game_model.score)
         {
             GameData.instance.high_score = game_model.score;
-            PlayerPrefs.SetInt("High Score" + lvl_index, GameData.instance.high_score);
+            PlayerPrefs.SetInt("High Score" + GameData.instance.lvl_index, GameData.instance.high_score);
             ui_model.ui_update |= Ui.UiUpdate.HIGHSCORE;
         }
         ui_model.ui_update |= Ui.UiUpdate.SCORE;
@@ -450,6 +476,7 @@ public class GameConroller : MonoBehaviour
 
     void won()
     {
+        PlayerPrefs.SetInt("Level Won" + GameData.instance.lvl_index, 1);
         game_model.game_status = GameModel.status.WON;
         ui_model.ui_update |= Ui.UiUpdate.SCREEN;
     }

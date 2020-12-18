@@ -10,7 +10,8 @@ public class UiView : MonoBehaviour
     public GameObject screen;
     public GameObject gameover_score;
     public GameObject main_text;
-    public GameObject high_score_text;
+    
+    public GameObject level_text;
 
     public Text score_text;
     public Text lives_text;
@@ -37,9 +38,17 @@ public class UiView : MonoBehaviour
             {
                 score_text.text = "SCORE: " + game_model.score;
             }
-            if ((ui_model.ui_update & Ui.UiUpdate.HIGHSCORE) == Ui.UiUpdate.HIGHSCORE)
+            if ((ui_model.ui_update & Ui.UiUpdate.LEVEL) == Ui.UiUpdate.LEVEL)
             {
-                high_score_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("HIGH SCORE: " + GameData.instance.high_score);
+                if (PlayerPrefs.GetInt("Level Won" + GameData.instance.lvl_index) == 1)
+                {
+                    level_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("LEVEL: " + GameData.instance.lvl_index + " (Completed)");
+                }
+                else
+                {
+                    level_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("LEVEL: " + GameData.instance.lvl_index);
+                }
+               
             }
             if ((ui_model.ui_update & Ui.UiUpdate.SCREEN) == Ui.UiUpdate.SCREEN)
             {
@@ -56,7 +65,7 @@ public class UiView : MonoBehaviour
                         break;
                     case GameModel.status.WON:
                         screen.SetActive(true);
-                        gameover_score.gameObject.GetComponent<TextMeshProUGUI>().SetText("Score: " + game_model.score);
+                        gameover_score.gameObject.GetComponent<TextMeshProUGUI>().SetText("Congrats");
                         main_text.gameObject.GetComponent<TextMeshProUGUI>().SetText("You Won");
                         break;
                     case GameModel.status.GAMEOVER:

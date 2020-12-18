@@ -13,7 +13,8 @@ public class Ui
         SCORE = 1 << 1,
         SCREEN = 1 << 2,
         HIGHSCORE = 1 << 3,
-        ALL = LIVES | SCORE | SCREEN | HIGHSCORE
+        LEVEL = 1 << 4,
+        ALL = LIVES | SCORE | SCREEN | HIGHSCORE | LEVEL
     }
 
     public UiUpdate ui_update = UiUpdate.ALL;
@@ -127,6 +128,7 @@ public class GameData : MonoBehaviour
             _instance = this;
         }
     }
+    public int lvl_index;
 
     public int high_score = 0;
 
